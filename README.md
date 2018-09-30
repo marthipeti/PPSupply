@@ -6,7 +6,7 @@ A PaperSuppy egy olyan alkalmazás, amin keresztül papír-írószer, valamint c
 
 #### Vendégként:
 - hozzáférhetünk a termékek listájához → *Termékek* *listázása*
-- regisztrálhat → *Regisztráció*
+- regisztrálhatunk → *Regisztráció*
 
 #### Felhasználóként:
 - hozzáférhetünk a termékek listájához → *Termékek* *listázása*
@@ -16,23 +16,24 @@ A PaperSuppy egy olyan alkalmazás, amin keresztül papír-írószer, valamint c
 - törölhetjük a profilunkat → *Profil* *törlése*
 
 #### Adminisztrátorként:
-- hozzáférünk a termékek listájához → *Termékek* *listázása*
+- hozzáférhetünk a termékek listájához → *Termékek* *listázása*
 - vehetünk fel új terméket → *Termék* *felvétele*
 - törölhetünk terméket → *Termék* *törlése*
 - rendelhetünk terméket a beszállítóktól, a készletek feltöltésére →  *Termékek* *rendelése*
-- hozzáférünk felhasználók listájához → *Felhasználók* *listázása*
+- hozzáférhetünk felhasználók listájához → *Felhasználók* *listázása*
 - törölhetünk felhasználót → *Felhasználó* *törlése*
 - listázhatjuk a rendeléseket → *Rendelések* *listázása*
-- teljesíthetjünk rendeléseket → *Rendelés* *lezárása*
+- teljesíthetünk rendeléseket → *Rendelés* *lezárása*
 - törölhetünk rendelést → *Rendelés* *törlése*
 
 ## Szerepkörök:
 - **vendég:** Felhasználói profil nélkül böngészhet a termékek között, de nem rendelhet
 - **felhasználó:** Regisztráció után rendelhet
-- **adminisztrátor:** Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Rendelés beszállítóktól.
+- **adminisztrátor:** Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Rendelés beszállítóktól a készletek feltöltése végett.
 
 ## Nem funkcionális követelmények
-- Felhasználóbarát, ergonomikus elrendezés és kinézet.
+- Felhasználóbarát
+- Ergonomikus elrendezés és kinézet
 - Intuitív
-- Gyors működés.
-- Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
+- Gyors működés
+- Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés
