@@ -2,44 +2,34 @@
 
 Rövid leírás
 
-### Markdown
+## Funkcionális követelmények
+#### Vendégként:
+- hozzáférhetünk a termékek listájához → Termékek listázása
+- regisztrálhat → Regisztráció
+#### Felhasználóként:
+- hozzáférhetünk a termékek listájához → Termékek listázása
+- rendelést adhatunk le a készleten lévő termékekre → Rendelés leadása
+- módosíthatjuk profilunk adatait → Profil szerkesztése
+- listázhatjuk korábbi rendeléseinket → Rendelések listázása
+- törölhetjük a profilunkat → Profil törlése
+#### Adminisztrátorként:
+- hozzáférünk a termékek listájához → Termékek listázása
+- vehetünk fel új terméket → Termék felvétele
+- törölhetünk terméket → Termék törlése
+- rendelhetünk terméket a beszállítóktól, a készletek feltöltésére →  Termékek rendelése
+- hozzáférünk felhasználók listájához → Felhasználók listázása
+- törölhetünk felhasználót → Felhasználó törlése
+- listázhatjuk a rendeléseket → Rendelések listázása
+- teljesíthetjünk rendeléseket → Rendelés lezárása
+- törölhetünk rendelést → Rendelés törlése
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Szerepkörök:
+- vendég: Felhasználói profil nélkül böngészhet a termékek között, de nem rendelhet
+- felhasználó: Regisztráció után rendelhet
+- adminisztrátor: Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Rendelés beszállítóktól.
 
-```markdown
-Syntax highlighted code block
-
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
-
-# Header 1
-## Header 2
-### Header 3
-
-| Command | Description |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/marthipeti/PPSupply/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Nem funkcionális követelmények
+- Felhasználóbarát, ergonomikus elrendezés és kinézet.
+- Intuitív
+- Gyors működés.
+- Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
