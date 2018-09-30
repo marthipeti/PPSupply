@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+# PPSupply
 
-You can use the [editor on GitHub](https://github.com/marthipeti/PPSupply/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Rövid leírás
 
 ### Markdown
 
@@ -11,9 +9,19 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ```markdown
 Syntax highlighted code block
 
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
+
 # Header 1
 ## Header 2
 ### Header 3
+
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
 
 - Bulleted
 - List
