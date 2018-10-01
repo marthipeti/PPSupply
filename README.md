@@ -1,6 +1,6 @@
 # PPSupply
 
-A PaperSuppy egy olyan alkalmazás, amin keresztül papír-írószer, valamint csomagolóanyagokat rendelhetünk.
+A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint csomagolóanyagokat rendelhetünk.
 
 ## Funkcionális követelmények
 
