@@ -37,3 +37,33 @@ A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint 
 - Intuitív
 - Gyors működés
 - Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés
+
+## Autentikáció, autorizáció és endpointok
+Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozzáférései vannak az adatbázishoz. Bizonyos oldalak több hozzáférést és műveletet (GET, POST , PUT, DELETE) engednek meg szinte az összes felhasználónak, de vannak olyan információk, amiket csak az adminisztrátor tud lekérdezni.
+
+## Táblák
+-	Felhasználók táblája
+-	Termékek táblája
+-	Rendelések táblája
+-	Beszállító cégek táblája
+
+A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, zárójelben pedig az elérési útvonal van.
+
+### Felhasználók táblája
+- Vendég: nincs hozzáférés
+-	Felhasználó: GET, POST, PUT, DELETE: csak saját ID (api/users/{id})
+-	Adminisztrátor:	GET, POST, PUT, DELETE: összes ID (api/users, api/users/{id})
+
+### Termékek táblája
+-	Vendég: GET: összes ID (api/products, api/products/{id})
+-	Felhasználó:GET: összes ID (api/products, api/products/{id})
+-	Adminisztrátor:GET, POST, PUT, DELETE:  összes ID (api/products, api/products/{id}
+
+### Rendelések táblája
+-	Vendég: nincs hozzáférése
+-	Felhasználó:	GET, POST, PUT, DELETE: csak saját ID (api/orders/{userid}
+-	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/orders/{id},  api/orders/{userdid})
+
+### Beszállító cégek
+-	Vendégnek és felhasználónak nincs hozzáférése
+-	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/suppliers/{id})
