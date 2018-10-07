@@ -71,9 +71,12 @@ A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, záró
 
 ## Felhasználói felület tervek
 ![PPS admin UI](/images/admin.png)
-
+##
 ![PPS kosar UI](/images/kosar.png)
-
+##
 ![PPS profil UI](/images/profil.png)
-
+##
 ![PPS termekek UI](/images/termekek.png)
+##
+
+![PPS logo m](/images/logo-mini.png)
