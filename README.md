@@ -1,4 +1,4 @@
-# PPSupply
+![PPS logo](/images/logo-text-black-mini.png)
 
 A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint csomagolóanyagokat rendelhetünk.
 
@@ -46,6 +46,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Termékek táblája
 -	Rendelések táblája
 -	Beszállító cégek táblája
+![PPS tables](/images/tables.png)
 
 A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, zárójelben pedig az elérési útvonal van.
 
