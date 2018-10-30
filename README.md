@@ -55,8 +55,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ### Felhasználók táblája
 - 	Vendég: nincs hozzáférés
 -	Felhasználó: 
+
 	`GET/POST/PUT/DELETE api/users/{id}` csak saját ID
 -	Adminisztrátor:	
+
 	`GET/POST/PUT/DELETE api/users, api/users/{id}` összes ID
 
 ### Termékek táblája
