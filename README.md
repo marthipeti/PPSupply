@@ -95,5 +95,5 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 - HTML, CCS, Typescript, git, Angular
 
 ## Adatbázis UML diagram
-![DB UML](/images/db_uml.png)
+![DB UML](/images/db_uml.PNG)
 
