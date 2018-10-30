@@ -2,7 +2,7 @@
 
 A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint csomagolóanyagokat rendelhetünk.
 
-#Projektötlet
+# Projektötlet
 
 ## Funkcionális követelmények
 
@@ -83,4 +83,4 @@ A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, záró
 
 ![PPS logo m](/images/logo-mini.png)
 
-#Backend megvalósítása
+# Backend megvalósítása
