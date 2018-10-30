@@ -50,12 +50,14 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Beszállító cégek táblája
 ![PPS tables](/images/tables.png)
 
-A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, zárójelben pedig az elérési útvonal van.
+*A lekérdézéseknél az „ID” kifejezést használjuk az adott sorra*
 
 ### Felhasználók táblája
-- Vendég: nincs hozzáférés
--	Felhasználó: GET, POST, PUT, DELETE: csak saját ID (api/users/{id})
--	Adminisztrátor:	GET, POST, PUT, DELETE: összes ID (api/users, api/users/{id})
+- 	Vendég: nincs hozzáférés
+-	Felhasználó: 
+	- `GET/POST/PUT/DELETE api/users/{id}` csak saját ID
+-	Adminisztrátor:	
+	- `GET/POST/PUT/DELETE api/users, api/users/{id}` összes ID
 
 ### Termékek táblája
 -	Vendég: GET: összes ID (api/products, api/products/{id})
@@ -73,11 +75,8 @@ A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, záró
 
 ## Felhasználói felület tervek
 [PPS admin UI](/images/admin.png)
-##
 [PPS kosár UI](/images/kosar.png)
-##
 [PPS profil UI](/images/profil.png)
-##
 [PPS termékek UI](/images/termekek.png)
 ##
 
