@@ -76,12 +76,24 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/suppliers/{id})
 
 ## Felhasználói felület tervek
-[PPS admin UI](/images/admin.png)
-[PPS kosár UI](/images/kosar.png)
-[PPS profil UI](/images/profil.png)
-[PPS termékek UI](/images/termekek.png)
+![PPS admin UI](/images/admin.png)
+
+![PPS kosár UI](/images/kosar.png)
+
+![PPS profil UI](/images/profil.png)
+
+![PPS termékek UI](/images/termekek.png)
 ##
 
 ![PPS logo m](/images/logo-mini.png)
 
-# Backend megvalósítása
+# Backend
+
+## Fejlesztői környezet, használt technológiák
+- NetBeans IDE 8.2
+- HTTP, JSON, REST API (Spring boot, Issue tracker)
+- HTML, CCS, Typescript, git, Angular
+
+## Adatbázis UML diagram
+![DB UML](/images/db_uml.png)
+
