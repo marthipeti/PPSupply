@@ -72,13 +72,13 @@ A lekérdézésénél az „ID” kifejezést használjuk az adott sorra, záró
 -	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/suppliers/{id})
 
 ## Felhasználói felület tervek
-![PPS admin UI](/images/admin.png)
+[PPS admin UI](/images/admin.png)
 ##
-![PPS kosar UI](/images/kosar.png)
+[PPS kosár UI](/images/kosar.png)
 ##
-![PPS profil UI](/images/profil.png)
+[PPS profil UI](/images/profil.png)
 ##
-![PPS termekek UI](/images/termekek.png)
+[PPS termékek UI](/images/termekek.png)
 ##
 
 ![PPS logo m](/images/logo-mini.png)
