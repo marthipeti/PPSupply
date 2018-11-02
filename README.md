@@ -122,7 +122,11 @@ src
     - hu
       - elte
 	    - PPSupply
-	      - PpSupplyApplication.java
+		  - controllers
+		  - entities
+		  - repositories
+		  - services
+	      PpSupplyApplication.java
   - resources
     - application.properties
 
