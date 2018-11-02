@@ -51,6 +51,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Termék tag-ek táblája
 
 *elavult*
+
 ![PPS tables](/images/tables.png)
 
 *A lekérdézéseknél az „ID” kifejezést használjuk az adott sorra*
@@ -114,7 +115,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ## Adatbázis UML diagram
 ![DB UML](/images/db_uml.PNG)
 
-##Alkalmazott könyvtárstruktúra
+## Alkalmazott könyvtárstruktúra
 src
 -main
  -java
