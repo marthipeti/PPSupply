@@ -117,12 +117,12 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Alkalmazott könyvtárstruktúra
 src
--main
- -java
-  -hu
-   -elte
-	-PPSupply
-	 -PpSupplyApplication.java
- -resources
-  -application.properties
+- main
+  - java
+    - hu
+      - elte
+	    - PPSupply
+	      - PpSupplyApplication.java
+  - resources
+    - application.properties
 
