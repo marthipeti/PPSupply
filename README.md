@@ -116,18 +116,25 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ![DB UML](/images/db_uml.PNG)
 
 ## Alkalmazott könyvtárstruktúra
-src
-- main
-  - java
-    - hu
-      - elte
-	    - PPSupply
-		  - controllers
-		  - entities
-		  - repositories
-		  - services
+1. src
+   - main
+     - java
+       - hu
+         - elte
+	       - PPSupply
+		     - controllers
+		     - entities
+			   - User.java
+			   - Tag.java
+			   - Order.java
+			   - Product.java
+		     - repositories
+		     - services
+			   - MyUserDetailsService.java
 		  
-	      PpSupplyApplication.java
-  - resources
-    - application.properties
+	           PpSupplyApplication.java
+			   
+			   WebSecurityConfig.java
+     - resources
+       - application.properties
 
