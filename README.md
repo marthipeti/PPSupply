@@ -24,14 +24,15 @@ A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint 
 - rendelhetünk terméket a beszállítóktól, a készletek feltöltésére →  *Termékek* *rendelése*
 - hozzáférhetünk felhasználók listájához → *Felhasználók* *listázása*
 - törölhetünk felhasználót → *Felhasználó* *törlése*
-- listázhatjuk a rendeléseket → *Rendelések* *listázása*
-- teljesíthetünk rendeléseket → *Rendelés* *lezárása*
-- törölhetünk rendelést → *Rendelés* *törlése*
+- termékhez köthetük tag-et → *Tag* *hozzáadása*
+- hozzáadhatunk tag-et a listához → *Tag* *létrehozása*
+- törölhetünk tag-et → *Tag* *törlése*
+- módosíthatunk tag-et → *Tag* *módosítása*
 
 ## Szerepkörök:
 - **vendég:** Felhasználói profil nélkül böngészhet a termékek között, de nem rendelhet
 - **felhasználó:** Regisztráció után rendelhet
-- **adminisztrátor:** Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Rendelés beszállítóktól a készletek feltöltése végett.
+- **adminisztrátor:** Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Termékekre tag-eket rakhat pl. írószer, papír, színes, akciós stb.
 
 ## Nem funkcionális követelmények
 - Felhasználóbarát
@@ -47,33 +48,49 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Felhasználók táblája
 -	Termékek táblája
 -	Rendelések táblája
--	Beszállító cégek táblája
+-	Termék tag-ek táblája
+
+*elavult*
 ![PPS tables](/images/tables.png)
 
 *A lekérdézéseknél az „ID” kifejezést használjuk az adott sorra*
 
 ### Felhasználók táblája
-- 	Vendég: nincs hozzáférés
+- 	Vendég: 
+
+	nincs hozzáférés
 -	Felhasználó: 
 
-	`GET/POST/PUT/DELETE api/users/{id}` csak saját ID
+	GET, POST, PUT, DELETE: csak saját ID (api/users/{id}) 
 -	Adminisztrátor:	
 
-	`GET/POST/PUT/DELETE api/users, api/users/{id}` összes ID
+	GET, POST, PUT, DELETE: összes ID (api/users, api/users/{id}): 
 
 ### Termékek táblája
--	Vendég: GET: összes ID (api/products, api/products/{id})
--	Felhasználó:GET: összes ID (api/products, api/products/{id})
--	Adminisztrátor:GET, POST, PUT, DELETE:  összes ID (api/products, api/products/{id}
+-	Vendég: 
+
+	GET: összes ID (api/products, api/products/{id})
+-	Felhasználó:
+
+	GET: összes ID (api/products, api/products/{id})
+-	Adminisztrátor:
+
+	GET, POST, PUT, DELETE:  összes ID (api/products, api/products/{id})
 
 ### Rendelések táblája
--	Vendég: nincs hozzáférése
--	Felhasználó:	GET, POST, PUT, DELETE: csak saját ID (api/orders/{userid}
--	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/orders/{id},  api/orders/{userdid})
+-	Vendég: 
 
-### Beszállító cégek
+	nincs hozzáférése
+-	Felhasználó:
+
+	GET, POST, PUT, DELETE: csak saját ID (api/orders/{userid}
+-	Adminisztrátor:	
+
+	GET, POST, PUT, DELETE:  összes ID (api/orders/{id},  api/orders/{userdid})
+
+### Termék tag-ek táblája
 -	Vendégnek és felhasználónak nincs hozzáférése
--	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/suppliers/{id})
+-	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/tags/{id})
 
 ## Felhasználói felület tervek
 ![PPS admin UI](/images/admin.png)
@@ -96,4 +113,15 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Adatbázis UML diagram
 ![DB UML](/images/db_uml.PNG)
+
+##Alkalmazott könyvtárstruktúra
+src
+-main
+ -java
+  -hu
+   -elte
+	-PPSupply
+	 -PpSupplyApplication.java
+ -resources
+  -application.properties
 
