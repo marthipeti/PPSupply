@@ -132,9 +132,9 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 		     - services
 			   - MyUserDetailsService.java
 		  
-	           PpSupplyApplication.java
+	         PpSupplyApplication.java
 			   
-			   WebSecurityConfig.java
+			 WebSecurityConfig.java
      - resources
        - application.properties
 
