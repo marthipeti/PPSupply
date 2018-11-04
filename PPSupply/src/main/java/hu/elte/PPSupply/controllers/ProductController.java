@@ -82,37 +82,4 @@ public class ProductController {
         return ResponseEntity.ok(oProd.get().getReservations());
     }
     
-    /*@PostMapping("/{id}/reservations")
-    public ResponseEntity<Reservation> postReservations(@PathVariable Integer id,
-                                                        @RequestBody Reservation reservation) {
-        Optional<Product> oProd = productRepository.findById(id);
-        if (!oProd.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        
-        reservation.setId(null);
-        reservation.setProduct(oProd.get());
-        return ResponseEntity.ok(reservationRepository.save(reservation));
-    }
-    
-    @PutMapping("/{id}/reservations")
-    public ResponseEntity<Iterable<Reservation>> putReservations(@PathVariable Integer id,
-                                                                 @RequestBody List<Reservation> reservations) {
-        Optional<Product> oProd = productRepository.findById(id);
-        if (!oProd.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        
-        for (Reservation reservation: reservations) {
-            Optional<Reservation> oReservation  = reservationRepository.findById(reservation.getId());
-            if (!oReservation.isPresent()) {
-                continue;
-            }
-            
-            oReservation.get().setProduct(oProd.get());
-            reservationRepository.save(oReservation.get());
-        }
-        
-        return ResponseEntity.ok(oProd.get().getReservations());
-    }*/
 }
