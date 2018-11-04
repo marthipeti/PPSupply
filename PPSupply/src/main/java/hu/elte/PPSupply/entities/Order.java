@@ -1,4 +1,4 @@
-/*package hu.elte.PPSupply.entities;
+package hu.elte.PPSupply.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -32,4 +32,3 @@ public class Order implements Serializable {
     @ManyToOne
     private Product product;
 }
-*/
