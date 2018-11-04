@@ -1,4 +1,4 @@
-/*package hu.elte.PPSupply.controllers;
+package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Order;
 import hu.elte.PPSupply.entities.Product;
@@ -80,4 +80,3 @@ public class OrderController {
     
     
 }
-*/
