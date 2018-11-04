@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -29,8 +30,6 @@ public class ReservationController {
     
     @PostMapping("")
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
-        //System.out.println(reservation.getProduct().toString());
-        System.out.println("-------------------");
         reservation.setId(null);
         return ResponseEntity.ok(reservationRepository.save(reservation));
     }
@@ -48,10 +47,11 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);
+        
         if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
-            
+        System.out.println("-------------------");
         reservationRepository.delete(oReservation.get());
         return ResponseEntity.ok().build();
     }
