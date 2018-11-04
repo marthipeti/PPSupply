@@ -67,7 +67,7 @@ public class OrderController {
         order.setId(id);
         return ResponseEntity.ok(orderRepository.save(order));
     }
-    
+    /*
     @GetMapping("/{id}/product")
     public ResponseEntity<Product> getProd(@PathVariable Integer id) {
         Optional<Order> oOrder = orderRepository.findById(id);
@@ -76,7 +76,7 @@ public class OrderController {
         }
         
         return ResponseEntity.ok(oOrder.get().getProduct());
-    }
+    }*/
     
     
 }
