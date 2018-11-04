@@ -82,7 +82,7 @@ public class ProductController {
         return ResponseEntity.ok(oProd.get().getReservations());
     }
     
-    @PostMapping("/{id}/reservations")
+    /*@PostMapping("/{id}/reservations")
     public ResponseEntity<Reservation> postReservations(@PathVariable Integer id,
                                                         @RequestBody Reservation reservation) {
         Optional<Product> oProd = productRepository.findById(id);
@@ -114,5 +114,5 @@ public class ProductController {
         }
         
         return ResponseEntity.ok(oProd.get().getReservations());
-    }
+    }*/
 }

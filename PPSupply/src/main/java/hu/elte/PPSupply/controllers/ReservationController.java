@@ -28,42 +28,42 @@ public class ReservationController {
     } 
     
     @PostMapping("")
-    public ResponseEntity<Reservation> post(@RequestBody Reservation order) {
-        order.setId(null);
-        return ResponseEntity.ok(reservationRepository.save(order));
+    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
+        reservation.setId(null);
+        return ResponseEntity.ok(reservationRepository.save(reservation));
     }
     
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> get(@PathVariable Integer id) {
-        Optional<Reservation> oOrder = reservationRepository.findById(id);
-        if (!oOrder.isPresent()) {
+        Optional<Reservation> oReservation = reservationRepository.findById(id);
+        if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
         
-        return ResponseEntity.ok(oOrder.get());
+        return ResponseEntity.ok(oReservation.get());
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Reservation> oOrder = reservationRepository.findById(id);
-        if (!oOrder.isPresent()) {
+        Optional<Reservation> oReservation = reservationRepository.findById(id);
+        if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
             
-        reservationRepository.delete(oOrder.get());
+        reservationRepository.delete(oReservation.get());
         return ResponseEntity.ok().build();
     }
     
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> put(@PathVariable Integer id,
-                                           @RequestBody Reservation order) {
+                                           @RequestBody Reservation reservation) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);
         if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
-        order.setId(id);
-        return ResponseEntity.ok(reservationRepository.save(order));
+        reservation.setId(id);
+        return ResponseEntity.ok(reservationRepository.save(reservation));
     }
     /*
     @GetMapping("/{id}/product")

@@ -1,8 +1,10 @@
 package hu.elte.PPSupply.controllers;
 
+import hu.elte.PPSupply.entities.Product;
 import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.Tag;
 import hu.elte.PPSupply.repositories.TagRepository;
+import hu.elte.PPSupply.repositories.ProductRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,8 @@ import hu.elte.PPSupply.repositories.ReservationRepository;
 public class TagController {
     @Autowired
     private TagRepository tagRepository;
-//    @Autowired
-//    private OrderRepository orderRepository;
+    @Autowired
+    private ProductRepository productRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<Tag>> getAll() {
@@ -33,13 +35,13 @@ public class TagController {
         return ResponseEntity.ok(tagRepository.save(tag));
     }
     
-   /* @GetMapping("/{id}/orders")
-    public ResponseEntity<Iterable<Order>> getOrders(@PathVariable Integer id) {
+    @GetMapping("/{id}/products")
+    public ResponseEntity<Iterable<Product>> getProducts(@PathVariable Integer id) {
         Optional<Tag> oTag = tagRepository.findById(id);
         if (!oTag.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
-        return ResponseEntity.ok(oTag.get().getOrders());
-    }*/
+        return ResponseEntity.ok(oTag.get().getProducts());
+    }
 }
