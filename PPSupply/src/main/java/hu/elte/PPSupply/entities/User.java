@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,6 +59,7 @@ public class User implements Serializable {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
     
-    @OneToMany(mappedBy = "user")
+    @JoinTable
+    @OneToMany
     private List<Reservation> reservations;
 }
