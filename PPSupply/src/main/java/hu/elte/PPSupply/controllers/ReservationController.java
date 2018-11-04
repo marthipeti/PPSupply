@@ -29,6 +29,8 @@ public class ReservationController {
     
     @PostMapping("")
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
+        //System.out.println(reservation.getProduct().toString());
+        System.out.println("-------------------");
         reservation.setId(null);
         return ResponseEntity.ok(reservationRepository.save(reservation));
     }
