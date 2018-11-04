@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/reservations")
 public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
