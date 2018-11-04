@@ -3,6 +3,7 @@ package hu.elte.PPSupply.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -27,7 +28,6 @@ import lombok.NoArgsConstructor;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany(mappedBy = "user")
     private Integer id;
     
     @Column
@@ -57,4 +57,7 @@ public class User implements Serializable {
     public enum Role {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
+    
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 }
