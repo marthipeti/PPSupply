@@ -27,12 +27,15 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column
-    private Integer userID;
+    @JoinTable
+    @ManyToOne
+    private Integer user;
     
     @JoinTable
     @ManyToMany
     private List<Product> product;
+    
+    
 
 }
 
