@@ -31,7 +31,7 @@ public class Order implements Serializable {
     @JsonIgnore
     @JoinColumn
     @ManyToOne
-    private List<Product> product;
+    private Product product;
 
 }
 
