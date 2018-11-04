@@ -1,4 +1,4 @@
-/*package hu.elte.PPSupply.entities;
+package hu.elte.PPSupply.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -30,4 +30,4 @@ public class Tag implements Serializable {
     @ManyToMany(mappedBy = "tags")
     @JsonIgnore
     private List<Product> products;
-}*/
+}
