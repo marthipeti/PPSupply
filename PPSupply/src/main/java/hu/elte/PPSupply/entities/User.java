@@ -58,6 +58,6 @@ public class User implements Serializable {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
     
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
+    /*@OneToMany(mappedBy = "user")
+    private List<Order> orders;*/
 }

@@ -1,5 +1,6 @@
 package hu.elte.PPSupply.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -43,5 +44,6 @@ public class Product implements Serializable {
     private List<Tag> tags;
     
     @ManyToMany(mappedBy = "product")
+    @JsonIgnore
     private List<Order> orders;
 }
