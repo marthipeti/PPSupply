@@ -1,8 +1,7 @@
 package hu.elte.PPSupply.controllers;
 
-import hu.elte.PPSupply.entities.Order;
+import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.Tag;
-import hu.elte.PPSupply.repositories.OrderRepository;
 import hu.elte.PPSupply.repositories.TagRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import hu.elte.PPSupply.repositories.ReservationRepository;
 
 @RestController
 @RequestMapping("/api/tags")

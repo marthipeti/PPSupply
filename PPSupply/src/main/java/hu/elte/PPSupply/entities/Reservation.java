@@ -19,10 +19,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
-public class Order implements Serializable {
+public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

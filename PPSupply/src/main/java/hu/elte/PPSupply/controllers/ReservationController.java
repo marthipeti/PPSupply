@@ -1,8 +1,7 @@
 package hu.elte.PPSupply.controllers;
 
-import hu.elte.PPSupply.entities.Order;
+import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.Product;
-import hu.elte.PPSupply.repositories.OrderRepository;
 //import hu.elte.PPSupply.repositories.TagRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +14,28 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import hu.elte.PPSupply.repositories.ReservationRepository;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderController {
+public class ReservationController {
     @Autowired
-    private OrderRepository orderRepository;
-    //@Autowired
-    //private TagRepository tagRepository;
+    private ReservationRepository reservationRepository;
     
     @GetMapping("")
-    public ResponseEntity<Iterable<Order>> getAll() {
-        return ResponseEntity.ok(orderRepository.findAll());
+    public ResponseEntity<Iterable<Reservation>> getAll() {
+        return ResponseEntity.ok(reservationRepository.findAll());
     } 
     
     @PostMapping("")
-    public ResponseEntity<Order> post(@RequestBody Order order) {
+    public ResponseEntity<Reservation> post(@RequestBody Reservation order) {
         order.setId(null);
-        return ResponseEntity.ok(orderRepository.save(order));
+        return ResponseEntity.ok(reservationRepository.save(order));
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Order> get(@PathVariable Integer id) {
-        Optional<Order> oOrder = orderRepository.findById(id);
+    public ResponseEntity<Reservation> get(@PathVariable Integer id) {
+        Optional<Reservation> oOrder = reservationRepository.findById(id);
         if (!oOrder.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
@@ -47,25 +45,25 @@ public class OrderController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Order> oOrder = orderRepository.findById(id);
+        Optional<Reservation> oOrder = reservationRepository.findById(id);
         if (!oOrder.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
             
-        orderRepository.delete(oOrder.get());
+        reservationRepository.delete(oOrder.get());
         return ResponseEntity.ok().build();
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Order> put(@PathVariable Integer id,
-                                           @RequestBody Order order) {
-        Optional<Order> oReservation = orderRepository.findById(id);
+    public ResponseEntity<Reservation> put(@PathVariable Integer id,
+                                           @RequestBody Reservation order) {
+        Optional<Reservation> oReservation = reservationRepository.findById(id);
         if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
         order.setId(id);
-        return ResponseEntity.ok(orderRepository.save(order));
+        return ResponseEntity.ok(reservationRepository.save(order));
     }
     /*
     @GetMapping("/{id}/product")
