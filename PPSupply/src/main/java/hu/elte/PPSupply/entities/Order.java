@@ -31,4 +31,6 @@ public class Order implements Serializable {
     @JoinColumn
     @ManyToOne
     private Product product;
+
 }
+
