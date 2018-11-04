@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.services;
+/*package hu.elte.PPSupply.services;
 
 import hu.elte.PPSupply.entities.User;
 import hu.elte.PPSupply.repositories.UserRepository;
