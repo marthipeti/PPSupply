@@ -1,8 +1,6 @@
 package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Reservation;
-import hu.elte.PPSupply.entities.Product;
-//import hu.elte.PPSupply.repositories.TagRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -29,29 +26,28 @@ public class ReservationController {
     } 
     
     @PostMapping("")
-    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
-        reservation.setId(null);
-        return ResponseEntity.ok(reservationRepository.save(reservation));
+    public ResponseEntity<Reservation> post(@RequestBody Reservation order) {
+        order.setId(null);
+        return ResponseEntity.ok(reservationRepository.save(order));
     }
     
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> get(@PathVariable Integer id) {
-        Optional<Reservation> oReservation = reservationRepository.findById(id);
-        if (!oReservation.isPresent()) {
+        Optional<Reservation> oOrder = reservationRepository.findById(id);
+        if (!oOrder.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
         
-        return ResponseEntity.ok(oReservation.get());
+        return ResponseEntity.ok(oOrder.get());
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);
-        
         if (!oReservation.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
-        System.out.println("-------------------");
+            
         reservationRepository.delete(oReservation.get());
         return ResponseEntity.ok().build();
     }
@@ -67,16 +63,4 @@ public class ReservationController {
         reservation.setId(id);
         return ResponseEntity.ok(reservationRepository.save(reservation));
     }
-    /*
-    @GetMapping("/{id}/product")
-    public ResponseEntity<Product> getProd(@PathVariable Integer id) {
-        Optional<Order> oOrder = orderRepository.findById(id);
-        if (!oOrder.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        
-        return ResponseEntity.ok(oOrder.get().getProduct());
-    }*/
-    
-    
 }

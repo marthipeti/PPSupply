@@ -81,5 +81,4 @@ public class ProductController {
         
         return ResponseEntity.ok(oProd.get().getReservations());
     }
-    
 }
