@@ -31,7 +31,7 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
     
-    /*@PostMapping("")
+    @PostMapping("")
     public ResponseEntity<Product> post(@RequestBody Product product) {
         product.setId(null);
         return ResponseEntity.ok(productRepository.save(product));
@@ -69,7 +69,7 @@ public class ProductController {
         prod.setId(id);
         return ResponseEntity.ok(productRepository.save(prod));
     }
-    */
+    
     /*@GetMapping("/{id}/orders")
     public ResponseEntity<Iterable<Order>> getOrders(@PathVariable Integer id) {
         Optional<Product> oProd = productRepository.findById(id);
