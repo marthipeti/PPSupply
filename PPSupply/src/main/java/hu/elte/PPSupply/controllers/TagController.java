@@ -33,7 +33,7 @@ public class TagController {
         return ResponseEntity.ok(tagRepository.save(tag));
     }
     
-    @GetMapping("/{id}/orders")
+   /* @GetMapping("/{id}/orders")
     public ResponseEntity<Iterable<Order>> getOrders(@PathVariable Integer id) {
         Optional<Tag> oTag = tagRepository.findById(id);
         if (!oTag.isPresent()) {
@@ -41,5 +41,5 @@ public class TagController {
         }
         
         return ResponseEntity.ok(oTag.get().getOrders());
-    }
+    }*/
 }

@@ -89,7 +89,7 @@ public class ProductController {
         }
         
         order.setId(null);
-        order.setMachine(oProd.get());
+        order.setProduct(oProd.get());
         return ResponseEntity.ok(orderRepository.save(order));
     }
     
@@ -107,7 +107,7 @@ public class ProductController {
                 continue;
             }
             
-            oOrder.get().setMachine(oProd.get());
+            oOrder.get().setProduct(oProd.get());
             orderRepository.save(oOrder.get());
         }
         
