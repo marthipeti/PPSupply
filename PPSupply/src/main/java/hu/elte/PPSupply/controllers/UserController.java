@@ -70,7 +70,6 @@ public class UserController {
         if (!oUser.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        
         user.setId(id);
         return ResponseEntity.ok(userRepository.save(user));
     }
