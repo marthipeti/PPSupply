@@ -1,12 +1,11 @@
-/*package hu.elte.PPSupply.controllers;
+package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.User;
 import hu.elte.PPSupply.repositories.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
     
     @GetMapping("")
-    @Secured({ "ROLE_ADMIN" })
+//    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Iterable<User>> getAll() {
         Iterable<User> users = userRepository.findAll();
         return ResponseEntity.ok(users);
@@ -38,8 +37,8 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
         user.setId(null);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(User.Role.ROLE_USER);
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setRole(User.Role.ROLE_USER);
         return ResponseEntity.ok(userRepository.save(user));
     }
     
@@ -77,4 +76,3 @@ public class UserController {
     }
     
 }
-*/

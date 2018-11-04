@@ -1,4 +1,4 @@
-/*package hu.elte.PPSupply.entities;
+package hu.elte.PPSupply.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -29,17 +29,12 @@ public class User implements Serializable {
     private Integer id;
     
     @Column
-    private String firstName;
+    @NotNull
+    private String name;
     
     @Column
     @NotNull
-    private String lastName;
-    
-    @Column
     private String email;
-    
-    @Column
-    private String phoneNumber;
     
     @Column(unique = true)
     @NotNull
@@ -61,4 +56,3 @@ public class User implements Serializable {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
 }
-*/
