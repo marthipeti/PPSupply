@@ -41,7 +41,7 @@ public class Product implements Serializable {
     @ManyToMany
     @JoinTable
     private List<Tag> tags;
-    /*
-    @OneToMany(mappedBy = "product")
-    private List<Order> orders;*/
+    
+    @ManyToMany(mappedBy = "product")
+    private List<Order> orders;
 }

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,13 +26,15 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column
+    @JsonIgnore
+    @JoinColumn
+    @ManyToOne
     private Integer userID;
     
     @JsonIgnore
     @JoinColumn
-    @ManyToOne
-    private Product product;
+    @ManyToMany
+    private List<Product> products;
 
 }
 
