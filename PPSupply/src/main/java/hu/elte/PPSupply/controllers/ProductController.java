@@ -2,8 +2,10 @@ package hu.elte.PPSupply.controllers;
 
 //import hu.elte.PPSupply.entities.Order;
 import hu.elte.PPSupply.entities.Product;
+import hu.elte.PPSupply.entities.Reservation;
 //import hu.elte.PPSupply.repositories.OrderRepository;
 import hu.elte.PPSupply.repositories.ProductRepository;
+import hu.elte.PPSupply.repositories.ReservationRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
-    //@Autowired
-    //private OrderRepository orderRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<Product>> getAll() {
@@ -70,47 +72,47 @@ public class ProductController {
         return ResponseEntity.ok(productRepository.save(prod));
     }
     
-    /*@GetMapping("/{id}/orders")
-    public ResponseEntity<Iterable<Order>> getOrders(@PathVariable Integer id) {
+    @GetMapping("/{id}/reservations")
+    public ResponseEntity<Iterable<Reservation>> getReservations(@PathVariable Integer id) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
-        return ResponseEntity.ok(oProd.get().getOrders());
+        return ResponseEntity.ok(oProd.get().getReservations());
     }
     
-    @PostMapping("/{id}/orders")
-    public ResponseEntity<Order> postOrders(@PathVariable Integer id,
-                                                        @RequestBody Order order) {
+    @PostMapping("/{id}/reservations")
+    public ResponseEntity<Reservation> postReservations(@PathVariable Integer id,
+                                                        @RequestBody Reservation reservation) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
-        order.setId(null);
-        order.setProduct(oProd.get());
-        return ResponseEntity.ok(orderRepository.save(order));
+        reservation.setId(null);
+        reservation.setProduct(oProd.get());
+        return ResponseEntity.ok(reservationRepository.save(reservation));
     }
     
-    @PutMapping("/{id}/orders")
-    public ResponseEntity<Iterable<Order>> putOrders(@PathVariable Integer id,
-                                                                 @RequestBody List<Order> orders) {
+    @PutMapping("/{id}/reservations")
+    public ResponseEntity<Iterable<Reservation>> putReservations(@PathVariable Integer id,
+                                                                 @RequestBody List<Reservation> reservations) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         
-        for (Order order: orders) {
-            Optional<Order> oOrder  = orderRepository.findById(order.getId());
-            if (!oOrder.isPresent()) {
+        for (Reservation reservation: reservations) {
+            Optional<Reservation> oReservation  = reservationRepository.findById(reservation.getId());
+            if (!oReservation.isPresent()) {
                 continue;
             }
             
-            oOrder.get().setProduct(oProd.get());
-            orderRepository.save(oOrder.get());
+            oReservation.get().setProduct(oProd.get());
+            reservationRepository.save(oReservation.get());
         }
         
-        return ResponseEntity.ok(oProd.get().getOrders());
-    }*/
+        return ResponseEntity.ok(oProd.get().getReservations());
+    }
 }
