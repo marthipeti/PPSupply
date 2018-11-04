@@ -37,14 +37,11 @@ public class Product implements Serializable {
     @Column
     @NotNull
     private String description;
-    
-    @Column
-    private String image;
-    
+    /*
     @ManyToMany
     @JoinTable
     private List<Tag> tags;
     
     @OneToMany(mappedBy = "product")
-    private List<Order> orders;
+    private List<Order> orders;*/
 }

@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.repositories;
+/*package hu.elte.PPSupply.repositories;
 
 import org.springframework.stereotype.Repository;
 import hu.elte.PPSupply.entities.User;
@@ -10,3 +10,4 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer> {
     public Optional<User> findByUsername(String username);
 }
+*/

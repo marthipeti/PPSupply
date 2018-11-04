@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.entities;
+/*package hu.elte.PPSupply.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -61,3 +61,4 @@ public class User implements Serializable {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
 }
+*/

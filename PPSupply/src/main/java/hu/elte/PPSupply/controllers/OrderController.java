@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.controllers;
+/*package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Order;
 import hu.elte.PPSupply.entities.Product;
@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private TagRepository tagRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<Order>> getAll() {
@@ -78,3 +80,4 @@ public class OrderController {
     
     
 }
+*/

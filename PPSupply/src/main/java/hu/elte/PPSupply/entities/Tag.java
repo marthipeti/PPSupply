@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.entities;
+/*package hu.elte.PPSupply.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -31,3 +31,4 @@ public class Tag implements Serializable {
     @JsonIgnore
     private List<Product> products;
 }
+*/

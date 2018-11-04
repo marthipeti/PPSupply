@@ -1,4 +1,4 @@
-package hu.elte.PPSupply.controllers;
+/*package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.User;
 import hu.elte.PPSupply.repositories.UserRepository;
@@ -77,3 +77,4 @@ public class UserController {
     }
     
 }
+*/

@@ -1,8 +1,8 @@
 package hu.elte.PPSupply.controllers;
 
-import hu.elte.PPSupply.entities.Order;
+//import hu.elte.PPSupply.entities.Order;
 import hu.elte.PPSupply.entities.Product;
-import hu.elte.PPSupply.repositories.OrderRepository;
+//import hu.elte.PPSupply.repositories.OrderRepository;
 import hu.elte.PPSupply.repositories.ProductRepository;
 import java.util.List;
 import java.util.Optional;
@@ -22,29 +22,29 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private OrderRepository orderRepository;
+    //@Autowired
+    //private OrderRepository orderRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<Product>> getAll() {
-        Iterable<Product> machines = productRepository.findAll();
-        return ResponseEntity.ok(machines);
+        Iterable<Product> products = productRepository.findAll();
+        return ResponseEntity.ok(products);
     }
     
-    @PostMapping("")
-    public ResponseEntity<Product> post(@RequestBody Product prod) {
-        prod.setId(null);
-        return ResponseEntity.ok(productRepository.save(prod));
+    /*@PostMapping("")
+    public ResponseEntity<Product> post(@RequestBody Product product) {
+        product.setId(null);
+        return ResponseEntity.ok(productRepository.save(product));
     }
         
     @GetMapping("/{id}")
     public ResponseEntity<Product> get(@PathVariable Integer id) {
-        Optional<Product> oProd = productRepository.findById(id);
-        if (!oProd.isPresent()) {
+        Optional<Product> oProduct = productRepository.findById(id);
+        if (!oProduct.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
         
-        return ResponseEntity.ok(oProd.get());
+        return ResponseEntity.ok(oProduct.get());
     }
     
     @DeleteMapping("/{id}")
@@ -69,8 +69,8 @@ public class ProductController {
         prod.setId(id);
         return ResponseEntity.ok(productRepository.save(prod));
     }
-    
-    @GetMapping("/{id}/orders")
+    */
+    /*@GetMapping("/{id}/orders")
     public ResponseEntity<Iterable<Order>> getOrders(@PathVariable Integer id) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
@@ -93,7 +93,7 @@ public class ProductController {
         return ResponseEntity.ok(orderRepository.save(order));
     }
     
-    @PutMapping("/{id}/orderss")
+    @PutMapping("/{id}/orders")
     public ResponseEntity<Iterable<Order>> putOrders(@PathVariable Integer id,
                                                                  @RequestBody List<Order> orders) {
         Optional<Product> oProd = productRepository.findById(id);
@@ -112,5 +112,5 @@ public class ProductController {
         }
         
         return ResponseEntity.ok(oProd.get().getOrders());
-    }
+    }*/
 }
