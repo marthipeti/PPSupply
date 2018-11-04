@@ -44,6 +44,7 @@ public class UserController {
     }
     
     @GetMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<User> get(@PathVariable Integer id) {
         Optional<User> oUser = userRepository.findById(id);
         if (!oUser.isPresent()) {
@@ -54,6 +55,7 @@ public class UserController {
     }
     
     @DeleteMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<User> oUser = userRepository.findById(id);
         if (!oUser.isPresent()) {

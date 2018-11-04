@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
+import org.springframework.security.access.annotation.Secured;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -21,6 +22,7 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
     
     @GetMapping("")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Reservation>> getAll() {
         return ResponseEntity.ok(reservationRepository.findAll());
     } 
@@ -53,6 +55,7 @@ public class ReservationController {
     }
     
     @PutMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Reservation> put(@PathVariable Integer id,
                                            @RequestBody Reservation reservation) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ public class ProductController {
     }
     
     @PostMapping("")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Product> post(@RequestBody Product product) {
         product.setId(null);
         return ResponseEntity.ok(productRepository.save(product));
@@ -50,6 +52,7 @@ public class ProductController {
     }
     
     @DeleteMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
@@ -61,6 +64,7 @@ public class ProductController {
     }
     
     @PutMapping("/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Product> put(@PathVariable Integer id,
                                               @RequestBody Product prod) {
         Optional<Product> oProd = productRepository.findById(id);
@@ -73,6 +77,7 @@ public class ProductController {
     }
     
     @GetMapping("/{id}/reservations")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Reservation>> getReservations(@PathVariable Integer id) {
         Optional<Product> oProd = productRepository.findById(id);
         if (!oProd.isPresent()) {
