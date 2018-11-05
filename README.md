@@ -142,6 +142,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 - DELETE : Adott {id}-ű felhasználó törlése (ADMIN) 
 - PUT : Adott {id}-ű felhasználó módosítása (ADMIN)
 
+## Regisztrációs végpont máködése
+
+![szekvencia-diagram](/images/szekvencia-diagram.png)
+
 ## Alkalmazott könyvtárstruktúra
 1. src
 - main
