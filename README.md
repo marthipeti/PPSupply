@@ -50,12 +50,6 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Rendelések táblája
 -	Termék tag-ek táblája
 
-*elavult*
-
-![PPS tables](/images/tables.png)
-
-*A lekérdézéseknél az „ID” kifejezést használjuk az adott sorra*
-
 ### Felhasználók táblája
 - 	Vendég: 
 
