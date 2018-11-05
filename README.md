@@ -109,6 +109,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ## Adatbázis UML diagram
 ![DB UML](/images/db_uml.PNG)
 
+## Végpontok
+### /api/products
+asd
+
 ## Alkalmazott könyvtárstruktúra
 1. src
 - main
