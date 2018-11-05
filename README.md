@@ -119,38 +119,28 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
    DELETE : Adott {id}-ű termék törlése (ADMIN)
    PUT : Adott {id}-ű termék módosítása (ADMIN)
    #### /api/products/{id}/reservations
-   GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+   GET : Adott {id}-ű termék foglalás való előfordulásának listázása (ADMIN)
 ### Reservation
-   #### /api/products
-   GET : Minden termék listázása
-   POST : Új termék beszúrása (ADMIN)
-   #### /api/products/{id}
-   GET : Adott {id}-ű termék listázása
-   DELETE : Adott {id}-ű termék törlése (ADMIN)
-   PUT : Adott {id}-ű termék módosítása (ADMIN)
-   #### /api/products/{id}/reservations
-   GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+   #### /api/register
+   GET : Minden foglalás listázása
+   POST : Új foglalás beszúrása (ADMIN)
+   #### /api/register/{id}
+   GET : Adott {id}-ű foglalás listázása
+   DELETE : Adott {id}-ű foglalás törlése (ADMIN)
+   PUT : Adott {id}-ű foglalás módosítása (ADMIN)
 ### Tag
-   #### /api/products
-   GET : Minden termék listázása
-   POST : Új termék beszúrása (ADMIN)
-   #### /api/products/{id}
-   GET : Adott {id}-ű termék listázása
-   DELETE : Adott {id}-ű termék törlése (ADMIN)
-   PUT : Adott {id}-ű termék módosítása (ADMIN)
-   #### /api/products/{id}/reservations
-   GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+   #### /api/tags
+   GET : Minden TAG listázása (ADMIN)
+   POST : Új TAG beszúrása (ADMIN)
 ### User
-   #### /api/products
-   GET : Minden termék listázása
-   POST : Új termék beszúrása (ADMIN)
-   #### /api/products/{id}
-   GET : Adott {id}-ű termék listázása
-   DELETE : Adott {id}-ű termék törlése (ADMIN)
-   PUT : Adott {id}-ű termék módosítása (ADMIN)
-   #### /api/products/{id}/reservations
-   GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
-
+   #### /api/users
+   GET : Minden felhasználó listázása (ADMIN)
+   #### /api/register
+   POST : Új felhasználó regisztrálása
+   #### /api/users/{id}
+   GET : Adott {id}-ű felhasználó listázása (ADMIN)
+   DELETE : Adott {id}-ű felhasználó törlése (ADMIN)
+   PUT : Adott {id}-ű felhasználó módosítása (ADMIN)
 
 ## Alkalmazott könyvtárstruktúra
 1. src
