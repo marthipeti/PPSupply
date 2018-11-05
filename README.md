@@ -50,12 +50,6 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 -	Rendelések táblája
 -	Termék tag-ek táblája
 
-*elavult*
-
-![PPS tables](/images/tables.png)
-
-*A lekérdézéseknél az „ID” kifejezést használjuk az adott sorra*
-
 ### Felhasználók táblája
 - 	Vendég: 
 
@@ -115,26 +109,66 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ## Adatbázis UML diagram
 ![DB UML](/images/db_uml.PNG)
 
+## Végpontok
+### Product
+#### /api/products
+- GET : Minden termék listázása
+- POST : Új termék beszúrása (ADMIN)
+#### /api/products/{id}
+- GET : Adott {id}-ű termék listázása
+- DELETE : Adott {id}-ű termék törlése (ADMIN)
+- PUT : Adott {id}-ű termék módosítása (ADMIN)
+#### /api/products/{id}/reservations
+- GET : Adott {id}-ű termék foglalás való előfordulásának listázása (ADMIN)
+### Reservation
+#### /api/register
+- GET : Minden foglalás listázása
+- POST : Új foglalás beszúrása (ADMIN)
+#### /api/register/{id}
+- GET : Adott {id}-ű foglalás listázása
+- DELETE : Adott {id}-ű foglalás törlése (ADMIN)
+- PUT : Adott {id}-ű foglalás módosítása (ADMIN)
+### Tag
+#### /api/tags
+- GET : Minden TAG listázása (ADMIN)
+- POST : Új TAG beszúrása (ADMIN)
+### User
+#### /api/users
+- GET : Minden felhasználó listázása (ADMIN)
+#### /api/register
+- POST : Új felhasználó regisztrálása
+#### /api/users/{id}
+- GET : Adott {id}-ű felhasználó listázása (ADMIN) 
+- DELETE : Adott {id}-ű felhasználó törlése (ADMIN) 
+- PUT : Adott {id}-ű felhasználó módosítása (ADMIN)
+
 ## Alkalmazott könyvtárstruktúra
 1. src
-   - main
-     - java
-       - hu
-         - elte
-	       - PPSupply
-		     - controllers
-		     - entities
-			   - User.java
-			   - Tag.java
-			   - Order.java
-			   - Product.java
-		     - repositories
-		     - services
-			   - MyUserDetailsService.java
-		  
-	         PpSupplyApplication.java
-			   
-			 WebSecurityConfig.java
-     - resources
-       - application.properties
+- main
+	- java
+		- hu
+			- elte
+				- PPSupply
+					- controllers
+						- ProductController.java
+						- TagController.java
+						- ReservationController.java
+						- UserController.java
+					- entities
+						- User.java
+						- Tag.java
+						- Order.java
+						- Product.java
+					- repositories
+						- ProductRepository.java
+						- TagRepository.java
+						- ReservationRepository.java
+						- UserRepository.java
+					- services
+						- MyUserDetailsService.java
+					- PpSupplyApplication.java
+					- WebSecurityConfig.java
+- resources
+	- application.properties
+	- import.sql
 
