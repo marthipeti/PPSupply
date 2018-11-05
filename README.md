@@ -138,8 +138,8 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
    #### /api/register
    POST : Új felhasználó regisztrálása
    #### /api/users/{id}
-   GET : Adott {id}-ű felhasználó listázása (ADMIN)
-   DELETE : Adott {id}-ű felhasználó törlése (ADMIN)
+   GET : Adott {id}-ű felhasználó listázása (ADMIN) 
+   DELETE : Adott {id}-ű felhasználó törlése (ADMIN) 
    PUT : Adott {id}-ű felhasználó módosítása (ADMIN)
 
 ## Alkalmazott könyvtárstruktúra
