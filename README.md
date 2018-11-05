@@ -117,24 +117,30 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Alkalmazott könyvtárstruktúra
 1. src
-   - main
-     - java
-       - hu
-         - elte
-	       - PPSupply
-		     - controllers
-		     - entities
-			   - User.java
-			   - Tag.java
-			   - Order.java
-			   - Product.java
-		     - repositories
-		     - services
-			   - MyUserDetailsService.java
-		  
-	         PpSupplyApplication.java
-			   
-			 WebSecurityConfig.java
-     - resources
-       - application.properties
+- main
+	- java
+		- hu
+			- elte
+				- PPSupply
+					- controllers
+						- ProductController.java
+						- TagController.java
+						- ReservationController.java
+						- UserController.java
+					- entities
+						- User.java
+						- Tag.java
+						- Order.java
+						- Product.java
+					- repositories
+						- ProductRepository.java
+						- TagRepository.java
+						- ReservationRepository.java
+						- UserRepository.java
+					- services
+						- MyUserDetailsService.java
+					- PpSupplyApplication.java
+					- WebSecurityConfig.java
+- resources
+- application.properties
 
