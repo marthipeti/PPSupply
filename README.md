@@ -110,8 +110,17 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ![DB UML](/images/db_uml.PNG)
 
 ## Végpontok
-### /api/products
-asd
+### Product
+#### /api/products
+GET : Minden termék listázása
+POST : Új termék beszúrása (ADMIN)
+#### /api/products/{id}
+GET : Adott {id}-ű termék listázása
+DELETE : Adott {id}-ű termék törlése (ADMIN)
+PUT : Adott {id}-ű termék módosítása (ADMIN)
+#### /api/products/{id}/reservations
+GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+
 
 ## Alkalmazott könyvtárstruktúra
 1. src
