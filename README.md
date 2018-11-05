@@ -121,10 +121,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 #### /api/products/{id}/reservations
 - GET : Adott {id}-ű termék foglalás való előfordulásának listázása (ADMIN)
 ### Reservation
-#### /api/register
+#### /api/reservation
 - GET : Minden foglalás listázása
 - POST : Új foglalás beszúrása (ADMIN)
-#### /api/register/{id}
+#### /api/reservation/{id}
 - GET : Adott {id}-ű foglalás listázása
 - DELETE : Adott {id}-ű foglalás törlése (ADMIN)
 - PUT : Adott {id}-ű foglalás módosítása (ADMIN)
