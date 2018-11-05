@@ -144,7 +144,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Regisztrációs végpont működése
 
-![szekvencia-diagram](/images/szekvencia-diagram.png)
+![szekvencia-diagram](/images/szd.png)
 
 ## Alkalmazott könyvtárstruktúra
 1. src
