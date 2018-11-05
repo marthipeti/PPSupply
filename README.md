@@ -142,5 +142,6 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 					- PpSupplyApplication.java
 					- WebSecurityConfig.java
 - resources
-- application.properties
+	- application.properties
+	- import.sql
 
