@@ -111,15 +111,18 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Végpontok
 ### Product
-#### /api/products
-GET : Minden termék listázása
-POST : Új termék beszúrása (ADMIN)
-#### /api/products/{id}
-GET : Adott {id}-ű termék listázása
-DELETE : Adott {id}-ű termék törlése (ADMIN)
-PUT : Adott {id}-ű termék módosítása (ADMIN)
-#### /api/products/{id}/reservations
-GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+	#### /api/products
+	GET : Minden termék listázása
+	POST : Új termék beszúrása (ADMIN)
+	#### /api/products/{id}
+	GET : Adott {id}-ű termék listázása
+	DELETE : Adott {id}-ű termék törlése (ADMIN)
+	PUT : Adott {id}-ű termék módosítása (ADMIN)
+	#### /api/products/{id}/reservations
+	GET : Adott {id}-ű termék rendelésekben való előfordulásának listázása (ADMIN)
+### Reservation
+### Tag
+### User
 
 
 ## Alkalmazott könyvtárstruktúra
