@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer id;
     
     @Column
@@ -42,7 +43,13 @@ public class Product implements Serializable {
     @JoinTable
     private List<Tag> tags;
     
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany(mappedBy = "products")
     @JsonIgnore
     private List<Reservation> reservations;
+    
+    public void setQuantity(Integer quantity){
+        this.quantity = quantity;
+    }
+    
+    
 }

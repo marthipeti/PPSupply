@@ -1,6 +1,7 @@
 package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Reservation;
+import hu.elte.PPSupply.entities.User;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
+import hu.elte.PPSupply.repositories.UserRepository;
 import org.springframework.security.access.annotation.Secured;
 
 @RestController
@@ -20,6 +22,10 @@ import org.springframework.security.access.annotation.Secured;
 public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
+    @Autowired
+    private ReservedQuantityController reservedQuantityController;
+    @Autowired
+    private UserRepository userRepository;
     
     @GetMapping("")
     @Secured({ "ROLE_ADMIN" })
@@ -28,9 +34,12 @@ public class ReservationController {
     } 
     
     @PostMapping("")
-    public ResponseEntity<Reservation> post(@RequestBody Reservation order) {
-        order.setId(null);
-        return ResponseEntity.ok(reservationRepository.save(order));
+    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
+        reservation.setId(null);
+//        System.out.println(reservation.getUser().getId());
+//        reservation.setUser(reservation.getUser());
+//        reservation.setProducts(reservation.getProducts());
+        return ResponseEntity.ok(reservationRepository.save(reservation));
     }
     
     @GetMapping("/{id}")
@@ -39,7 +48,6 @@ public class ReservationController {
         if (!oOrder.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
-        
         return ResponseEntity.ok(oOrder.get());
     }
     

@@ -1,11 +1,10 @@
 package hu.elte.PPSupply.controllers;
 
-//import hu.elte.PPSupply.entities.Order;
 import hu.elte.PPSupply.entities.Product;
 import hu.elte.PPSupply.entities.Reservation;
-//import hu.elte.PPSupply.repositories.OrderRepository;
+import hu.elte.PPSupply.entities.Tag;
 import hu.elte.PPSupply.repositories.ProductRepository;
-import hu.elte.PPSupply.repositories.ReservationRepository;
+import hu.elte.PPSupply.repositories.TagRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
     @Autowired
-    private ReservationRepository reservationRepository;
+    private TagRepository tagRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<Product>> getAll() {
@@ -36,9 +35,12 @@ public class ProductController {
     
     @PostMapping("")
     @Secured({ "ROLE_ADMIN" })
-    public ResponseEntity<Product> post(@RequestBody Product product) {
-        product.setId(null);
-        return ResponseEntity.ok(productRepository.save(product));
+    public ResponseEntity<Product> post(@RequestBody Product prod) {
+        prod.setId(null);
+        if (prod.getQuantity() < 0 || !tagExists(prod)){
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(productRepository.save(prod));
     }
         
     @GetMapping("/{id}")
@@ -47,7 +49,6 @@ public class ProductController {
         if (!oProduct.isPresent()) {
             return ResponseEntity.notFound().build();   
         }
-        
         return ResponseEntity.ok(oProduct.get());
     }
     
@@ -71,6 +72,9 @@ public class ProductController {
         if (!oProd.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        if (prod.getQuantity() < 0 || !tagExists(prod)){
+            return ResponseEntity.badRequest().build();
+        }
         
         prod.setId(id);
         return ResponseEntity.ok(productRepository.save(prod));
@@ -85,5 +89,14 @@ public class ProductController {
         }
         
         return ResponseEntity.ok(oProd.get().getReservations());
+    }
+    
+    public boolean tagExists(Product prod){
+        for(Tag t : prod.getTags()){
+            if(!tagRepository.existsById(t.getId())){
+                return false;
+            }
+        }
+        return true;
     }
 }
