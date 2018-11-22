@@ -31,22 +31,20 @@ public class ReservedQuantityController {
         return ResponseEntity.ok(reservedQuantityRepository.findAll());
     }
     
-    @PostMapping("")
-    public ResponseEntity<ReservedQuantity> post(@RequestBody ReservedQuantity reservedQuantity ) {
-        reservedQuantity.setId(null);
-        Optional<Product> oProduct = productRepository.findById(reservedQuantity.getProductId());
-        if (!oProduct.isPresent()) {
-            return ResponseEntity.notFound().build();   
-        }else{
-            Product product = oProduct.get();
-            product.setQuantity(reservedQuantity.getReservedQuantity());
-            productRepository.save(product);
-        }
-        
-        
-        
-        return ResponseEntity.ok(reservedQuantityRepository.save(reservedQuantity));
-    }
+//    @PostMapping("")
+//    public ResponseEntity<ReservedQuantity> post(@RequestBody ReservedQuantity reservedQuantity ) {
+//        reservedQuantity.setId(null);
+//        Optional<Product> oProduct = productRepository.findById(reservedQuantity.getProductId());
+//        if (!oProduct.isPresent()) {
+//            return ResponseEntity.notFound().build();   
+//        }else{
+//            Product product = oProduct.get();
+//            product.setQuantity(product.getQuantity() - reservedQuantity.getReservedQuantity());
+//            productRepository.save(product);
+//        }
+//        
+//        return ResponseEntity.ok(reservedQuantityRepository.save(reservedQuantity));
+//    }
     
     
     

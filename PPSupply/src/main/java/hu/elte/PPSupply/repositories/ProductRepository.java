@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Integer>{
         List<Product> findAllByName(String name);
+        @Override
+        List<Product> findAll();
 }

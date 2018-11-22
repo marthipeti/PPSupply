@@ -47,8 +47,17 @@ public class Product implements Serializable {
     @JsonIgnore
     private List<Reservation> reservations;
     
+//    @OneToMany(mappedBy = "reservedQuantity")
+//    @JsonIgnore
+//    private List<ReservedQuantity> reservedQuantities;
+    
+    
     public void setQuantity(Integer quantity){
         this.quantity = quantity;
+    }
+    
+    public String getName(){
+        return this.name;
     }
     
     

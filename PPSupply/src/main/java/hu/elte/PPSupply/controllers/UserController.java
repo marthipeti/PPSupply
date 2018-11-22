@@ -1,6 +1,8 @@
 package hu.elte.PPSupply.controllers;
 
+import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.User;
+import hu.elte.PPSupply.repositories.ReservationRepository;
 import hu.elte.PPSupply.repositories.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     
@@ -75,6 +79,16 @@ public class UserController {
         }
         user.setId(id);
         return ResponseEntity.ok(userRepository.save(user));
+    }
+    
+    @GetMapping("/{id}/reservations")
+    public ResponseEntity<Iterable<Reservation>> getReservationByUserId(@PathVariable Integer id){
+        Optional<User> oUser = userRepository.findById(id);
+        if(!oUser.isPresent()){
+            return ResponseEntity.badRequest().build();
+        }
+        Iterable<Reservation> reservations = reservationRepository.findAllByUserId(id);
+        return ResponseEntity.ok(reservations);
     }
     
 }

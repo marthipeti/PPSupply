@@ -2,7 +2,6 @@ package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Product;
 import hu.elte.PPSupply.entities.Tag;
-import hu.elte.PPSupply.repositories.ProductRepository;
 import hu.elte.PPSupply.repositories.TagRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
     @Autowired
     private TagRepository tagRepository;
-    @Autowired
-    private ProductRepository productRepository;
     
     @GetMapping("")
     @Secured({ "ROLE_ADMIN" })

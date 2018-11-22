@@ -5,7 +5,6 @@ import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.Tag;
 import hu.elte.PPSupply.repositories.ProductRepository;
 import hu.elte.PPSupply.repositories.TagRepository;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -92,9 +91,13 @@ public class ProductController {
     }
     
     public boolean tagExists(Product prod){
-        for(Tag t : prod.getTags()){
-            if(!tagRepository.existsById(t.getId())){
-                return false;
+        if(prod.getTags() == null){
+            return true;
+        }else{
+            for(Tag t : prod.getTags()){
+                if(!tagRepository.existsById(t.getId())){
+                    return false;
+                }
             }
         }
         return true;
