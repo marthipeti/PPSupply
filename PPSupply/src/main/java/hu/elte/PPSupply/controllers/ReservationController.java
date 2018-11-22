@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
-import hu.elte.PPSupply.repositories.ReservedQuantityRepository;
 import hu.elte.PPSupply.repositories.UserRepository;
 import java.util.List;
 import org.springframework.security.access.annotation.Secured;
