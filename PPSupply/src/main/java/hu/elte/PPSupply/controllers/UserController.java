@@ -64,9 +64,8 @@ public class UserController {
         }else{
             if(Objects.equals(requestUser.getId(), id)){
                 return ResponseEntity.ok(requestUser);
-            }else{
-                return ResponseEntity.badRequest().build();
             }
+            return ResponseEntity.badRequest().build();
         }
     }
     
@@ -98,15 +97,14 @@ public class UserController {
                     requestUser.getRole().equals(user.getRole())){
                 user.setId(id);
                 return ResponseEntity.ok(userRepository.save(user));
-            }else{
-                return ResponseEntity.badRequest().build();
             }
+            return ResponseEntity.badRequest().build();
         }
     }
     
     @GetMapping("/{id}/reservations")
     @Secured({ "ROLE_ADMIN", "ROLE_USER" })
-    public ResponseEntity<Iterable<Reservation>> getReservationByUserId(@PathVariable Integer id){
+    public ResponseEntity<Iterable<Reservation>> getReservationsByUserId(@PathVariable Integer id){
         User requestUser = authenticatedUser.getUser();
         if(User.Role.ROLE_ADMIN.equals(requestUser.getRole())){
             Optional<User> oUser = userRepository.findById(id);
@@ -119,9 +117,8 @@ public class UserController {
             if(Objects.equals(requestUser.getId(), id)){
                 Iterable<Reservation> reservations = reservationRepository.findAllByUserId(id);
                 return ResponseEntity.ok(reservations);
-            }else{
-                return ResponseEntity.badRequest().build();
             }
+            return ResponseEntity.badRequest().build();
         }
     }
     
