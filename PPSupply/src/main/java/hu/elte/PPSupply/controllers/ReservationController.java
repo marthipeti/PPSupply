@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.PPSupply.repositories.ReservationRepository;
 import hu.elte.PPSupply.repositories.UserRepository;
+import hu.elte.PPSupply.services.AuthenticatedUser;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.security.access.annotation.Secured;
 
 @RestController
@@ -28,6 +30,8 @@ public class ReservationController {
     private ProductRepository productRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
     
     @GetMapping("")
     @Secured({ "ROLE_ADMIN" })
@@ -49,30 +53,22 @@ public class ReservationController {
         ArrayList<Integer> orderedId = new ArrayList<>(reservation.getOrderedQuantity().keySet());
         for(Integer id : orderedId){
             Optional<Product> oProd = productRepository.findById(id);
-//            System.out.println(id);
             Integer orderedQuantity = reservation.getOrderedQuantity().get(id);
-//            System.out.println(oProd.get().getQuantity());
-            if(!oProd.isPresent() || orderedQuantity<1 || orderedQuantity>oProd.get().getQuantity()){
-//                System.out.println("asd");
+            List<Product> reservationProducts = reservation.getProducts();
+            List<Integer> reservationId = new ArrayList<>();
+            for(Product prod : reservationProducts){
+                if(prod.getId() == null){
+                    return ResponseEntity.badRequest().build();
+                }
+                reservationId.add(prod.getId());
+            }
+            if(!oProd.isPresent() || !reservationId.contains(id) || orderedQuantity<1 || orderedQuantity>oProd.get().getQuantity()){
                 return ResponseEntity.badRequest().build();
             }
             Product product = oProd.get();
             product.setQuantity(product.getQuantity()-reservation.getOrderedQuantity().get(id));
             productRepository.save(product);
         }
-//        List<Product> prods = reservation.getProducts();
-//        for(Product p : prods){
-//            Optional<Product> oProd = productRepository.findById(p.getId());
-//            if(!oProd.isPresent()){
-//                return ResponseEntity.badRequest().build();
-//            }
-//            Product product = oProd.get();
-//            product.setQuantity(product.getQuantity()-1);
-//            if(product.getQuantity()<0){
-//                return ResponseEntity.badRequest().build();
-//            }
-//            productRepository.save(product);
-//        }
         return ResponseEntity.ok(reservationRepository.save(reservation));
     }
     

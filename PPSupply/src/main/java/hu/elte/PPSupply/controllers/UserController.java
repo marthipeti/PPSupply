@@ -4,6 +4,8 @@ import hu.elte.PPSupply.entities.Reservation;
 import hu.elte.PPSupply.entities.User;
 import hu.elte.PPSupply.repositories.ReservationRepository;
 import hu.elte.PPSupply.repositories.UserRepository;
+import hu.elte.PPSupply.services.AuthenticatedUser;
+import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,8 @@ public class UserController {
     private ReservationRepository reservationRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
     
     @GetMapping("")
     @Secured({ "ROLE_ADMIN" })
@@ -48,14 +52,22 @@ public class UserController {
     }
     
     @GetMapping("/{id}")
-    @Secured({ "ROLE_ADMIN" })
+    @Secured({ "ROLE_ADMIN", "ROLE_USER" })
     public ResponseEntity<User> get(@PathVariable Integer id) {
-        Optional<User> oUser = userRepository.findById(id);
-        if (!oUser.isPresent()) {
-            return ResponseEntity.notFound().build();   
+        User requestUser = authenticatedUser.getUser();
+        if(User.Role.ROLE_ADMIN.equals(requestUser.getRole())){
+            Optional<User> oUser = userRepository.findById(id);
+            if (!oUser.isPresent()) {
+                return ResponseEntity.notFound().build();   
+            }
+            return ResponseEntity.ok(oUser.get());
+        }else{
+            if(Objects.equals(requestUser.getId(), id)){
+                return ResponseEntity.ok(requestUser);
+            }else{
+                return ResponseEntity.badRequest().build();
+            }
         }
-        
-        return ResponseEntity.ok(oUser.get());
     }
     
     @DeleteMapping("/{id}")
@@ -71,24 +83,46 @@ public class UserController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<User> put(@PathVariable Integer id,
-                                              @RequestBody User user) {
-        Optional<User> oUser = userRepository.findById(id);
-        if (!oUser.isPresent()) {
-            return ResponseEntity.notFound().build();
+    @Secured({ "ROLE_ADMIN", "ROLE_USER" })
+    public ResponseEntity<User> put(@PathVariable Integer id, @RequestBody User user) {
+        User requestUser = authenticatedUser.getUser();
+        if(User.Role.ROLE_ADMIN.equals(requestUser.getRole())){
+            Optional<User> oUser = userRepository.findById(id);
+            if (!oUser.isPresent()) {
+                return ResponseEntity.notFound().build();   
+            }
+            user.setId(id);
+            return ResponseEntity.ok(userRepository.save(user));
+        }else{
+            if(Objects.equals(requestUser.getId(), id) && 
+                    requestUser.getRole().equals(user.getRole())){
+                user.setId(id);
+                return ResponseEntity.ok(userRepository.save(user));
+            }else{
+                return ResponseEntity.badRequest().build();
+            }
         }
-        user.setId(id);
-        return ResponseEntity.ok(userRepository.save(user));
     }
     
     @GetMapping("/{id}/reservations")
+    @Secured({ "ROLE_ADMIN", "ROLE_USER" })
     public ResponseEntity<Iterable<Reservation>> getReservationByUserId(@PathVariable Integer id){
-        Optional<User> oUser = userRepository.findById(id);
-        if(!oUser.isPresent()){
-            return ResponseEntity.badRequest().build();
+        User requestUser = authenticatedUser.getUser();
+        if(User.Role.ROLE_ADMIN.equals(requestUser.getRole())){
+            Optional<User> oUser = userRepository.findById(id);
+            if (!oUser.isPresent()) {
+                return ResponseEntity.notFound().build();   
+            }
+            Iterable<Reservation> reservations = reservationRepository.findAllByUserId(id);
+            return ResponseEntity.ok(reservations);
+        }else{
+            if(Objects.equals(requestUser.getId(), id)){
+                Iterable<Reservation> reservations = reservationRepository.findAllByUserId(id);
+                return ResponseEntity.ok(reservations);
+            }else{
+                return ResponseEntity.badRequest().build();
+            }
         }
-        Iterable<Reservation> reservations = reservationRepository.findAllByUserId(id);
-        return ResponseEntity.ok(reservations);
     }
     
 }
