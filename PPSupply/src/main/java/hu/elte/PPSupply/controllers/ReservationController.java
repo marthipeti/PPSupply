@@ -2,6 +2,7 @@ package hu.elte.PPSupply.controllers;
 
 import hu.elte.PPSupply.entities.Product;
 import hu.elte.PPSupply.entities.Reservation;
+import hu.elte.PPSupply.entities.User;
 import hu.elte.PPSupply.repositories.ProductRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class ReservationController {
     } 
     
     @PostMapping("")
+    @Secured({ "ROLE_ADMIN", "ROLE_USER" })
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
         reservation.setId(null);
         if(!userRepository.existsById(reservation.getUser().getId())){
@@ -73,6 +75,7 @@ public class ReservationController {
     }
     
     @GetMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<Reservation> get(@PathVariable Integer id) {
         Optional<Reservation> oOrder = reservationRepository.findById(id);
         if (!oOrder.isPresent()) {
@@ -82,14 +85,26 @@ public class ReservationController {
     }
     
     @DeleteMapping("/{id}")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Reservation> oReservation = reservationRepository.findById(id);
-        if (!oReservation.isPresent()) {
-            return ResponseEntity.notFound().build();   
+        User requestUser = authenticatedUser.getUser();
+        if(User.Role.ROLE_ADMIN.equals(requestUser.getRole())){
+            Optional<Reservation> oReservation = reservationRepository.findById(id);
+            if (!oReservation.isPresent()) {
+                return ResponseEntity.notFound().build();   
+            }
+            reservationRepository.delete(oReservation.get());
+            return ResponseEntity.ok().build();
+        }else{
+            List<Reservation> reservations = reservationRepository.findAllByUserId(requestUser.getId());
+            for(Reservation res : reservations){
+                if(res != null && res.getId().equals(id)){
+                    reservationRepository.delete(res);
+                    return ResponseEntity.ok().build();
+                }
+            }
+            return ResponseEntity.badRequest().build();
         }
-            
-        reservationRepository.delete(oReservation.get());
-        return ResponseEntity.ok().build();
     }
     
     @PutMapping("/{id}")
