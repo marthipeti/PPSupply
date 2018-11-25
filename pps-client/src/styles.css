@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: #bffebf; /* Old browsers */
+    background: -moz-linear-gradient(left, #bffebf 0%, #78bc42 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #bffebf 0%,#78bc42 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #bffebf 0%,#78bc42 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bffebf', endColorstr='#78bc42',GradientType=1 ); /* IE6-9 */ 
+}
