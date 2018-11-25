@@ -23,4 +23,6 @@ export class ProductService {
   public getProducts(): Product[] {
     return this._PRODUCTS;
   }
+
+  
 }

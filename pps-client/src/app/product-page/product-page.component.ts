@@ -19,4 +19,13 @@ export class ProductPageComponent implements OnInit {
     this._products = this._productService.getProducts();
   }
 
+  range = function(min, max, step) {
+    step = step || 1;
+    var input = [];
+    for (var i = min; i <= max; i += step) {
+        input.push(i);
+    }
+    return input;
+};
+
 }
