@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { MatToolbarModule,MatButtonModule, MatCardModule, MatGridListModule, MatListModule, MatTableModule, MatSelectModule, MatFormFieldModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatCardModule, MatGridListModule, MatListModule, MatTableModule, MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { RoutingModule } from './routing/routing.module';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
@@ -28,7 +28,14 @@ import { CartPageComponent } from './cart-page/cart-page.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    RoutingModule
+    RoutingModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule,
+    MatTableModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

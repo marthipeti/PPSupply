@@ -1,7 +1,22 @@
-<div>
+<h2>Termékek</h2>
 
-<p>
-  product-page works!
-</p>
-<h1>asdddddddddddd</h1>
-</div>
+<mat-grid-list cols="4" rowHeight="3:4" >
+    <mat-grid-tile *ngFor="let product of _products">
+      <mat-card>
+        <img mat-card-image src="assets/img/no-image.png" alt="No image available">
+        <mat-divider></mat-divider>
+        <mat-card-title>
+            {{ product.name}}
+        </mat-card-title>
+        <mat-card-content>
+            <p id="description">{{ product.description}}</p>
+            Jelenlegi készlet: {{ product.quantity }}db
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        ide a darab
+        <mat-card-actions>
+          <button mat-stroked-button>Kosárba</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
