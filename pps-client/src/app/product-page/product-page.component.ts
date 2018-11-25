@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../classes/product';
 import { ProductService } from '../services/product.service';
+import { Cart } from '../classes/cart';
+
 
 @Component({
   selector: 'app-product-page',
@@ -9,6 +11,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductPageComponent implements OnInit {
   private _products: Product[];
+  private _cart: Cart; 
 
   constructor(
     private _productService: ProductService
@@ -21,11 +24,8 @@ export class ProductPageComponent implements OnInit {
 
   range = function(min, max, step) {
     step = step || 1;
-    var input = [];
-    for (var i = min; i <= max; i += step) {
-        input.push(i);
-    }
-    return input;
+    var array = new Array(max);
+    return array;
 };
 
 }

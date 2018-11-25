@@ -1,6 +1,6 @@
-<h2>Termékek</h2>
 
 <mat-grid-list cols="4" rowHeight="3:4" >
+  <h1>Termékek</h1>
   <mat-grid-tile *ngFor="let product of _products">
     <mat-card>
       <img mat-card-image src="assets/img/no-image.png" alt="No image available">
@@ -13,11 +13,14 @@
         Jelenlegi készlet: {{ product.quantity }}db
       </mat-card-content>
       <mat-divider></mat-divider>
-      <mat-select placeholder="1" formControlName="db">
-        <mat-option  *ngFor="let n of range(1,product.quantity)" value="n">{{n}}</mat-option>
+      <mat-select placeholder="{{!product.quantity ? 'nincs készleten' : 1}}" formControlName="db">
+        <mat-option  *ngFor="let n of range(1,product.quantity); let i = index" value="i+1">{{i+1}}</mat-option>
       </mat-select>
       <mat-card-actions>
-        <button mat-stroked-button>Kosárba</button>
+        <button mat-stroked-button
+        disabled="{{ product.quantity === 0 }}"
+        formaction="/action_page2.php"
+        >Kosárba</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

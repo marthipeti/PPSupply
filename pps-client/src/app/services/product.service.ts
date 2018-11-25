@@ -13,7 +13,7 @@ export class ProductService {
     { id: 5, name: 'fénymásoló papír', quantity: 54, description: 'A3', tags: null},
     { id: 6, name: 'félfamentes rajzlap', quantity: 10, description: 'A4', tags: null},
     { id: 6, name: 'post-it', quantity: 64, description: 'többszínű', tags: null},
-    { id: 7, name: 'post-it', quantity: 1230, description: 'fehér', tags: null},
+    { id: 7, name: 'post-it', quantity: 0, description: 'fehér', tags: null},
     { id: 8, name: 'félfamentes rajzlap', quantity: 100, description: 'A2', tags: null},
     { id: 9, name: 'Stabilo ceruza', quantity: 10, description: 'rózsaszín', tags: null},
   ];
@@ -24,5 +24,5 @@ export class ProductService {
     return this._PRODUCTS;
   }
 
-  
+
 }
