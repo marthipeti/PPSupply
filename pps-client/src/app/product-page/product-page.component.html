@@ -1,5 +1,5 @@
 
-<mat-grid-list cols="4" rowHeight="3:4" >
+<mat-grid-list cols="4" rowHeight="3:5" >
   <h1>Termékek</h1>
   <mat-grid-tile *ngFor="let product of _products">
     <mat-card>
@@ -14,7 +14,7 @@
       </mat-card-content>
       <mat-divider></mat-divider>
       <mat-form-field>
-        <mat-select  [(value)]="selectedValue"  placeholder="{{!product.quantity ? 'nincs készleten' : ''}}" formControlName="db">
+        <mat-select  [(value)]="selectedValue"  placeholder="{{!product.quantity ? 'nincs készleten' : ''}}">
           <mat-option  *ngFor="let n of range(1,product.quantity); let i = index" value="{{i+1}}">{{i+1}}</mat-option>
         </mat-select>
       </mat-form-field>

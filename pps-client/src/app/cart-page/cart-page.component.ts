@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Cart } from '../classes/cart';
 import { Product } from '../classes/product';
+import { ActivatedRoute } from '@angular/router';
+import { Reservation } from '../classes/reservation';
+import { ReservationService } from '../services/reservation.service';
+
+
 
 @Component({
   selector: 'app-cart-page',
@@ -14,12 +19,15 @@ export class CartPageComponent implements OnInit {
   private displayedColumns = ['name','quantity','delete'];
 
   constructor(
-    private _cartService: CartService
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private reservationService: ReservationService
+
   ) { }
 
   ngOnInit() {
-    this._CART = this._cartService.getCart();
-    console.log(this._CART);
+    this._CART = this.cartService.getCart();
+    const id: number = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   getProducts(): any {
@@ -28,6 +36,11 @@ export class CartPageComponent implements OnInit {
 
   removeFromCart(product: Product): void {
     this._CART.removeFromCart(product);
+  }
+
+  private onSave(reservation: Reservation) {
+    this.reservationService.addReservation(reservation);
+    console.log(this.reservationService.getReservations());
   }
 
 

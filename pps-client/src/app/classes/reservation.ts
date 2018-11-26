@@ -1,10 +1,11 @@
 import { Product } from "./product";
 import { User } from "./user";
+type Dictionary = { product: Product ; pieces: number };
 
 
 export class Reservation {
     public id: number;
     public user: User;
-    public products: Product[];
-    public quantities: { [productId: number] : number; } = {};
+    public date: Date;
+    public products: Array<Dictionary>;
 }
