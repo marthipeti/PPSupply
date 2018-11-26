@@ -13,6 +13,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartPageComponent } from './cart-page/cart-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

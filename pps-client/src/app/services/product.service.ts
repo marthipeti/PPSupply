@@ -24,5 +24,9 @@ export class ProductService {
     return this._PRODUCTS;
   }
 
+  public getProduct(productId: number): Product {
+    return this._PRODUCTS.find(x => x.id == productId);
+  }
+
 
 }

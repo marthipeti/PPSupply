@@ -13,7 +13,8 @@ const routes: Route[] = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'registration', component: RegistrationPageComponent }, 
   { path: 'contact', component: ContactPageComponent },
-  { path: 'cart', component: CartPageComponent }
+  { path: 'cart', component: CartPageComponent },
+  { path: 'cart/cart', redirectTo: ''}  
 ];
 
 @NgModule({
