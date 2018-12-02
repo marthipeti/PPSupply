@@ -1,0 +1,15 @@
+<div id="page">
+<h1>Bejelentkezés</h1>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput formControlName="userName" placeholder="Felhasználónév">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" formControlName="password" placeholder="Jelszó">
+  </mat-form-field>
+  <br>
+  <mat-divider></mat-divider>
+  <button mat-flat-button type="submit" color="primary">Bejelentkezés</button>
+</form>
+</div>

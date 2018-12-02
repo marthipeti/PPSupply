@@ -1,0 +1,17 @@
+table {
+    width: 70%;
+    margin: auto;
+}
+
+span button{
+    width: 15%;
+    margin: auto;
+}
+
+#page {
+    width: 70%;
+    margin: auto;
+    height: inherit;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.6);
+}

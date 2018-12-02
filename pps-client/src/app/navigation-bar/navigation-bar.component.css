@@ -1,0 +1,19 @@
+mat-toolbar img {
+    height: 80px;
+    padding-top: 50px;
+}
+
+mat-toolbar span {
+    margin: auto;
+}
+
+mat-toolbar button {
+    margin: auto;
+    font-size: 1.2em;
+}
+
+mat-toolbar {
+    height: 15%;
+    margin: 0 auto;
+    background: #ffffff;
+}

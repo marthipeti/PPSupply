@@ -1,0 +1,39 @@
+<div id="page">
+<mat-tab-group >
+    <mat-tab label="Adatok" >
+      <mat-card>
+        <mat-card-title>
+          Hello {{_user.userName}}!
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <h3>Név: {{_user.name}}</h3>
+          <h3>Jogosultág: {{_user.role}}</h3>
+        </mat-card-content>
+        <br>
+
+        <mat-card-actions>
+          <button mat-stroked-button routerLink="" (click)="logOut()">Kijelentkezés</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Rendelések">
+        <table mat-table [dataSource]="getUserReservations()" class="mat-elevation-z1">
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Dátum </th>
+                <td mat-cell *matCellDef="let product"> {{product.date.toLocaleString()}} </td>
+              </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Termék </th>
+              <td mat-cell *matCellDef="let product"> {{product.products[0].product.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
+              <td mat-cell *matCellDef="let product"> {{product.products[0].pieces}}db </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-tab>
+</mat-tab-group>
+</div>

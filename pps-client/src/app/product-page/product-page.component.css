@@ -1,0 +1,29 @@
+mat-grid-list {
+    width: 90%;
+    margin: auto;
+}
+
+mat-card-content #description{
+    font-size: 1.3em;
+    color: gray
+}
+
+mat-card img {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+mat-card {
+    width: 80%;
+    height: auto;
+}
+
+#page {
+    width: 70%;
+    padding: 1%;
+    margin: auto;
+    height: inherit;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
