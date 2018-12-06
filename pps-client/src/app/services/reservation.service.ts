@@ -4,17 +4,22 @@ import { ProductService } from './product.service';
 import { User } from '../classes/user';
 import { UserService } from './user.service';
 import { Product } from '../classes/product';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
+
   private _RESERVATIONS: Reservation[];
+  private route: string = 'reservations';
 
   constructor(
+    private httpService: HttpService,
     private _ProductService: ProductService,
     private _UserService: UserService
-  ) {
+
+  ) {/*
     this._RESERVATIONS = [];
     let dict : { product: Product , pieces: number }[];
     dict = []
@@ -42,16 +47,36 @@ export class ReservationService {
           user: null,
           date: new Date('2018-04-11T17:32'),
           products: dict
-        });
+        });*/
   }
-   
 
-   public getReservations(): Reservation[] {
-     return this._RESERVATIONS;
-   }
-   
-   public getReservationsByUser(user: User): Reservation[] {
-    let reservations : Reservation[];
+
+  /*public getReservations(): Reservation[] {
+    return this.httpService.get<Reservation[]>(this.route);
+  }
+
+
+  
+  public getReservationsByUser(user: User): Reservation[] {
+    
+   let reservations : Reservation[];
+   reservations = [];
+   this._RESERVATIONS.forEach(element => {
+     element.user == user ? reservations.push(element) : '';
+   });
+   return reservations;
+   //return this.httpService.get<Reservation[]>('users/' + user.id + this.route);
+ }
+
+  public addReservation(reservation: Reservation): void {
+   this.httpService.post(this.route, reservation);
+  }*/
+  public getReservations(): Reservation[] {
+    return this._RESERVATIONS;
+  }
+
+  public getReservationsByUser(user: User): Reservation[] {
+    let reservations: Reservation[];
     reservations = [];
     this._RESERVATIONS.forEach(element => {
       element.user == user ? reservations.push(element) : '';
@@ -59,7 +84,7 @@ export class ReservationService {
     return reservations;
   }
 
-   public addReservation(reservation: Reservation): void {
-     this._RESERVATIONS.push(reservation);
-   }
+  public addReservation(reservation: Reservation): void {
+    this._RESERVATIONS.push(reservation);
+  }
 }

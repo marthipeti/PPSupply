@@ -32,7 +32,9 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  /*async*/ ngOnInit() {
+    /*this._user = await this._userService.getUser();
+    console.log(this._user);*/
   }
 
   getUserReservations(): Reservation[] {

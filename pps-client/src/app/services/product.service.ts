@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../classes/product';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private _PRODUCTS: Product[] = [
+/*  private _PRODUCTS: Product[] = [
     { id: 1, name: 'fénymásoló papír', quantity: 100, description: 'A4', image: null, tags: null, pieceToCart: 0},
     { id: 2, name: 'Bic toll', quantity: 10, description: 'piros', image: 'pen.jpg', tags: null, pieceToCart: 0},
     { id: 3, name: 'Bic toll', quantity: 0, description: 'kék', image: null, tags: null, pieceToCart: 0},
@@ -17,17 +18,20 @@ export class ProductService {
     { id: 8, name: 'félfamentes rajzlap', quantity: 100, description: 'A2', image: null, tags: null, pieceToCart: 0},
     { id: 9, name: 'Stabilo ceruza', quantity: 10, description: 'rózsaszín', image: null, tags: null, pieceToCart: 0},
   ];
+*/
 
+  private route: string = 'products';
 
+  constructor(
+    private httpService: HttpService
+  ) {}
 
-  constructor() { }
-
-  public getProducts(): Product[] {
-    return this._PRODUCTS;
+  public getProducts(): Promise<Product[]> {
+    return this.httpService.get<Product[]>(this.route);
   }
 
-  public getProduct(productId: number): Product {
-    return this._PRODUCTS.find(x => x.id == productId);
+  public getProduct(id: number): Promise<Product> {
+    return this.httpService.get<Product>(this.route + '/' + id);
   }
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../classes/product';
 import { Cart } from '../classes/cart';
+import { HttpService } from './http.service';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,9 @@ import { Cart } from '../classes/cart';
 export class CartService {
   private _CART: Cart;
 
-  constructor() { 
+  constructor(
+    private httpService : HttpService
+    ){ 
     this._CART = new Cart();
     this._CART.products = []
   }
@@ -19,6 +23,7 @@ export class CartService {
 
   public addToCart(product: Product, pieces: number): void {
     this._CART.products.push({product : product, pieces: pieces});
+    //this._CART.user = user;
     console.log(this._CART.products);
   }
 
@@ -34,6 +39,7 @@ export class CartService {
   }
 
   public sendReservation() {
+    //this._reservationService.addReservation(this._CART);
     console.log(this._CART);
   }
   

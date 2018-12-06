@@ -39,6 +39,13 @@ public class Product implements Serializable {
     @NotNull
     private String description;
     
+    @Column
+    @NotNull
+    private String image;
+    
+    @Column
+    private Integer addToCart;
+    
     @ManyToMany
     @JoinTable
     private List<Tag> tags;

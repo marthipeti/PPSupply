@@ -3,6 +3,7 @@ import { Product } from '../classes/product';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 import { MatSnackBar } from '@angular/material';
+import { User } from '../classes/user';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ProductPageComponent implements OnInit {
   private _products: Product[];
-  private _
 
   constructor(
     private _productService: ProductService,
@@ -21,8 +21,8 @@ export class ProductPageComponent implements OnInit {
 
   ) { }
 
-  ngOnInit() {
-    this._products = this._productService.getProducts();
+  async ngOnInit() {
+    this._products = await this._productService.getProducts();
   }
 
   range(min, max, step): Array<number> {
@@ -31,10 +31,11 @@ export class ProductPageComponent implements OnInit {
     return array;
   }
 
-  toCart(productId: number, pieces:number): void {
-    pieces != 0 ?
-    ( this._cartService.addToCart(this._productService.getProduct(productId),pieces),
-      this._productService.getProduct(productId).pieceToCart = 0 ) : null;
+  async toCart(id: number, pieces: number) {
+    if(pieces != undefined){
+      this._cartService.addToCart(await this._productService.getProduct(id),pieces);
+      //this._productService.getProduct(id).pieceToCart = 0;
+    }
   }
   
   productAddedMsg(productName: string, quantity: string) {

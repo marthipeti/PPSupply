@@ -21,8 +21,10 @@ import hu.elte.PPSupply.services.AuthenticatedUser;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/reservations")
 public class ReservationController {
     @Autowired
