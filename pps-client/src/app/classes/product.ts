@@ -6,7 +6,9 @@ export class Product {
     public quantity: number;
     public description: string;
     public image: string;
+    public addToCart: number;
     public tags: Tag[];
-    public pieceToCart: number;
+    
+
 }
 

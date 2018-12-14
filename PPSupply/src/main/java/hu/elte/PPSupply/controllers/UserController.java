@@ -41,6 +41,15 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
     
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody String username) {
+        Optional<User> oUser = userRepository.findByUserName(username);
+        if (!oUser.isPresent()) {
+            return ResponseEntity.status(401).build();
+        }
+        return ResponseEntity.ok(oUser.get());
+    }
+    
     @PostMapping("/register")
     public ResponseEntity<User> post(@RequestBody User user) {
         Optional<User> oUser = userRepository.findByUserName(user.getUserName());

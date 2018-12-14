@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -9,34 +11,33 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  @Output('save') public save: EventEmitter<{ userName: string, password: string}> =
-  new EventEmitter<{ userName: string, password: string}>();
-
-  private _user = {
-    userName: null,
-    password: null
-  };
+  private message = '';
+  private hidePassword = true;
 
   private loginForm = this.fb.group({
-    userName: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
-  private onSubmit() {
-    this.save.emit(this._user);
-    const userName: string = this.loginForm.get('userName').value;
-    console.log(this.loginForm.get('userName').value);
-    const password: string = this.loginForm.get('password').value;
-    this._user = {userName,password};
+  private async onSubmit() {
+    const username = this.loginForm.get('username').value;
+    const password = this.loginForm.get('password').value;
 
-    console.log(this._user);
+    try {
+      await this.authService.login(username, password);
+      this.router.navigate(['/']);
+    } catch (e) {
+      this.message = 'Sikertelen bejelentkezés!';
+    }
   }
 
 }

@@ -1,10 +1,19 @@
 <mat-toolbar>
   <span>
-      <img src="assets/img/logo-text-black-mini.png" alt="PaperSupply logo">
-      <button mat-button routerLink="">termékek</button>
-      <!--<button mat-button routerLink="profile">profilom</button>-->
-      <button>profilom</button>
-      <button mat-button routerLink="contact">kapcsolat</button>
-      <button mat-button routerLink="cart">kosár</button>
+    <img src="assets/img/logo-text-black-mini.png" alt="PaperSupply logo">
+    <button mat-button routerLink="">Termékek</button>
+    <button mat-button routerLink="profile">Profilom</button>
+    <button mat-button routerLink="contact">Kapcsolat</button>
+    <button id="cart" mat-button routerLink="cart">Kosár({{cartSize()}})</button>
   </span>
+
+  <div *ngIf="!authService.isLoggedIn">
+      <button mat-button routerLink="/login">Bejelentkezés</button>
+    </div>
+    <div *ngIf="authService.isLoggedIn">
+      {{authService.user.name}}
+      <button mat-button (click)="authService.logout()">Kijelentkezés</button>
+    </div>
+  
+  
 </mat-toolbar>

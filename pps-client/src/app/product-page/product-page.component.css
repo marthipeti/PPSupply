@@ -5,6 +5,7 @@ mat-grid-list {
 
 mat-card-content #description{
     font-size: 1.3em;
+    margin-bottom: 0.5em;
     color: gray
 }
 
@@ -15,8 +16,9 @@ mat-card img {
 }
 
 mat-card {
+    box-sizing: border-box;
     width: 80%;
-    height: auto;
+    height: 100%;
 }
 
 #page {
@@ -25,5 +27,19 @@ mat-card {
     margin: auto;
     height: inherit;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+#tags{
+    margin-bottom: 0%;
+    font-size: 0.5em;
+}
+
+#form{
+    position: absolute;
+    bottom: 0;
+}
+
+#title{
+    margin-top: 0.5em;
 }
 

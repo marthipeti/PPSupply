@@ -24,9 +24,8 @@
 
 </table>
 <br>
-<mat-divider></mat-divider>
-<br>
-<button mat-raised-button color="asset" (click)="sendReservation()">Megrendelés</button>
+<button mat-stroked-button disabled = "{{ authService.isLoggedIn === false }}" (click)="sendReservation()">Megrendelés</button>
+
 
 </div>
 

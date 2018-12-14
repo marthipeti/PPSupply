@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 import { Reservation } from '../classes/reservation';
 import { ReservationService } from '../services/reservation.service';
 import { Product } from '../classes/product';
 import { MatSnackBar } from '@angular/material';
 import { RouterModule, Router } from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-profile-page',
@@ -13,42 +14,39 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
-  private _user: User;
-  private displayedColumns = ['date','name','quantity'];
+  private user: User;
+  private reservations: Reservation[];
+  private products: {product: Product, pieces: number}[];
+  //private displayedColumns = ['products', 'orderedQuantity'];
+  //private displayedColumns = ['id','name', 'quantity'];
 
 
   constructor(
-    private _userService: UserService,
-    private _reservationService: ReservationService,
-    private _productMsg: MatSnackBar,
-    private _router: Router
-  ) { 
-    this._user = this._userService.getUser();
-    if (this._user == null) {
-      _router.navigate(['login']);
-    } else {
-      
+    private authService: AuthService,
+    private reservationService: ReservationService,
+    private productMsg: MatSnackBar,
+    private router: Router
+  ) {}
+
+  async ngOnInit() {
+    if(this.authService.isLoggedIn){
+      this.user = await this.authService.user;
+      this.reservations = await this.reservationService.getReservationsByUser(this.user);
+    }else{
+      this.router.navigate(['login'])
     }
-
   }
 
-  /*async*/ ngOnInit() {
-    /*this._user = await this._userService.getUser();
-    console.log(this._user);*/
+  public makeArray(): void{
+    for(let reservation of this.reservations){
+      for(let product of reservation.products){
+        this.products.push(product);
+      }
+    }
   }
 
-  getUserReservations(): Reservation[] {
-    return this._reservationService.getReservationsByUser(this._user);
-  }
 
-  logOut() {
-    this.logOutdMsg();
-    this._userService.logOut();
-  }
 
-  logOutdMsg() {
-    this._productMsg.open(this._userService.getUser().name + " sikeresen kijelentkeztél!" , null, {
-      duration: 3000});
-  }
+
 
 }

@@ -1,29 +1,33 @@
 <div id="page">
 <h1>Termékek</h1>
 <mat-grid-list cols="4" rowHeight="3:5" >
-  <mat-grid-tile *ngFor="let product of _products">
+  <mat-grid-tile *ngFor="let product of products">
     <mat-card>
       <img mat-card-image src="{{!product.image ? 'assets/img/no-image.png' : ('assets/img/' + product.image)}}" alt="No image available">
       <mat-divider></mat-divider>
-      <mat-card-title>
+      <mat-card-title id="title">
         {{ product.name }}
+        <mat-card-content id="tags" *ngFor="let tag of product.tags">
+          {{tag.text}}
+        </mat-card-content>
       </mat-card-title>
       <mat-card-content>
         <p id="description">{{ product.description}}</p>
         Jelenlegi készlet: {{ product.quantity }}db
       </mat-card-content>
-      <mat-divider></mat-divider>
-      <mat-form-field>
-        <mat-select  [(value)]="product.pieceToCart"  placeholder="{{!product.quantity ? 'nincs készleten' : ''}}">
-          <mat-option  *ngFor="let n of range(1,product.quantity); let i = index" value="{{i+1}}">{{i+1}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-card-actions>
-        <button mat-stroked-button
-        disabled="{{ product.quantity === 0 }}"
-        (click)="productAddedMsg(product.name, product.pieceToCart);toCart(product.id,product.pieceToCart)"
-        >Kosárba</button>
-      </mat-card-actions>
+      <div id="form">
+        <mat-form-field>
+          <mat-select  [(value)]="product.pieceToCart"  placeholder="{{!product.quantity ? 'nincs készleten' : ''}}">
+            <mat-option  *ngFor="let n of range(1,product.quantity); let i = index" value="{{i+1}}">{{i+1}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-stroked-button
+          disabled="{{ product.quantity === 0 }}"
+          (click)="productAddedMsg(product.name, product.pieceToCart);toCart(product.id,product.pieceToCart)"
+          >Kosárba</button>
+        </mat-card-actions>
+      </div>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

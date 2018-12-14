@@ -47,10 +47,6 @@ public class User implements Serializable {
     private String password;
     
     @Column
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastLogin;
-    
-    @Column
     @Enumerated(EnumType.STRING)
     private Role role;
     

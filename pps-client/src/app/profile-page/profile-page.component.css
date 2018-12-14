@@ -10,3 +10,9 @@ table {
     width: 100%;
     margin: auto;
 }
+
+#reserv{
+    background-color: white;
+    margin-inline-end: 0.5em;
+    margin-top: 0.5em;
+}

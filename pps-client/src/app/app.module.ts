@@ -44,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
