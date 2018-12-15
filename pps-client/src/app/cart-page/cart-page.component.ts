@@ -59,7 +59,10 @@ export class CartPageComponent implements OnInit {
   }
 
   sendReservation() {
-    this.cart.products.length == 0 ? this.noProductMsg() : null;
+    if(this.cart.products.length == 0){
+      this.noProductMsg();
+      return;
+    }
     this.reservation.user = this.authService.user;
     this.reservation.products = [];
     for (let i in this.cart.products) {
@@ -70,7 +73,7 @@ export class CartPageComponent implements OnInit {
     }
     console.log(this.reservation);
     this.reservationService.addReservation(this.reservation);
-    this.cartService.getCart().products = null;
+    this.cartService.getCart().products = [];
     this.cartService.getCart();
   }
 }
