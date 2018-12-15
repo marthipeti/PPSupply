@@ -1,3 +1,8 @@
+mat-grid-list {
+    width: 90%;
+    margin: auto;
+}
+
 #page {
     width: 70%;
     padding: 1%;
@@ -11,8 +16,30 @@ table {
     margin: auto;
 }
 
-#reserv{
+#mat-list{
     background-color: white;
-    margin-inline-end: 0.5em;
-    margin-top: 0.5em;
+}
+
+#card{
+    box-sizing: border-box;
+    width: 80%;
+    height: 30%;
+}
+
+#title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 90%;
+}
+
+#delete{
+    position: absolute;
+    bottom:0;
+    margin-bottom: 0.5em;
+}
+
+#content{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
 }

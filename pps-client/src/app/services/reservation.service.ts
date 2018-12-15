@@ -38,4 +38,10 @@ export class ReservationService {
       //this.router.navigate(['my-reservations']);
     } catch (e) {}
   }
+
+  public async deleteReservation(id: number){
+    try{
+      await this.httpService.delete<Reservation>(this.routeReservation + "/" + id);
+    }catch(e){}
+  }
 }

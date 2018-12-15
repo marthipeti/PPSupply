@@ -46,6 +46,7 @@ export class CartService {
   public incrementQuantity(product: Product): void {
     let index = this.cart.products.findIndex(x => x.product === product);
     let product2 = this.getProduct(this.cart.products[index].product.id);
+    console.log(product2);
     if (index !== -1) {
       if (this.cart.products[index].pieces >= product2.quantity) {
         this.cart.products[index].pieces = product2.quantity;
@@ -72,14 +73,13 @@ export class CartService {
     return this.cart.products;
   }
 
-  public getProduct(id: number): Product{
-    for(let i of this.getProducts()){
-      if(i.product.id === id){
-        return i.product;
-      }else{
-        return null;
+  public getProduct(id: number): Product {
+    for (let product of this.getProducts()) {
+      if (product.product.id === id) {
+        return product.product;
       }
     }
+    return null;
   }
 
   /*public sendReservation(): void {

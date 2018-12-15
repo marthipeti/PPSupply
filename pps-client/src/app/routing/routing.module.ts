@@ -11,14 +11,15 @@ import { LoginPageComponent } from '../login-page/login-page.component';
 
 
 const routes: Route[] = [
-  
+
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'products', component: ProductPageComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'registration', component: RegistrationPageComponent }, 
+  { path: 'registration', component: RegistrationPageComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'cart/cart', component: CartPageComponent },
+  { path: 'profile/profile', component: ProfilePageComponent },
   { path: 'cart/cart/cart', redirectTo: '/cart', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent }
 ];
@@ -29,6 +30,6 @@ const routes: Route[] = [
     RouterModule.forRoot(routes)
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class RoutingModule { }

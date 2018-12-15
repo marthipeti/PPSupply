@@ -6,7 +6,9 @@ import { ReservationService } from '../services/reservation.service';
 import { Product } from '../classes/product';
 import { MatSnackBar } from '@angular/material';
 import { RouterModule, Router } from '@angular/router';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OrderedQuantity } from '../classes/orderedQuantity';
+
 
 @Component({
   selector: 'app-profile-page',
@@ -15,9 +17,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 })
 export class ProfilePageComponent implements OnInit {
   private reservations: Reservation[];
-  private products: {product: Product, pieces: number}[];
+  private products: { product: Product, pieces: number }[];
+  private orderedArray: number[];
   //private displayedColumns = ['products', 'orderedQuantity'];
-  //private displayedColumns = ['id','name', 'quantity'];
+  private displayedColumns = ['id', 'name', 'quantity'];
 
 
   constructor(
@@ -25,23 +28,38 @@ export class ProfilePageComponent implements OnInit {
     private reservationService: ReservationService,
     private productMsg: MatSnackBar,
     private router: Router
-  ) {}
+  ) { }
 
   async ngOnInit() {
-    if(this.authService.isLoggedIn){
+    if (this.authService.isLoggedIn) {
       this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
-    }else{
+      this.orderedArray = this.makeArray(this.reservations);
+      //console.log(this.orderedArray);
+    } else {
       this.router.navigate(['login'])
     }
   }
 
-  /*public makeArray(): void{
-    for(let reservation of this.reservations){
-      for(let product of reservation.products){
-        this.products.push(product);
+  public makeArray(reservations: Reservation[]): number[] {
+    let array: number[] = [];
+    for (let reservation of reservations) {
+      for (let j of reservation.products) {
+        array.push(reservation.orderedQuantity[j.id])
       }
     }
-  }*/
+    return array;
+  }
+
+  deleteReservation(reservation: Reservation) {
+    //console.log(product);
+    console.log(reservation.id);
+    this.reservationService.deleteReservation(reservation.id);
+    this.reservations = this.getReservations();
+  }
+
+  getReservations(): Reservation[]{
+    return this.reservations;
+  }
 
 
 
