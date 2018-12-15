@@ -19,7 +19,6 @@ export class ProfilePageComponent implements OnInit {
   private reservations: Reservation[];
   private products: { product: Product, pieces: number }[];
   private orderedArray: number[];
-  //private displayedColumns = ['products', 'orderedQuantity'];
   private displayedColumns = ['id', 'name', 'quantity'];
 
 
@@ -61,8 +60,20 @@ export class ProfilePageComponent implements OnInit {
     return this.reservations;
   }
 
+  getReservationProducts(reservationId: number):  OrderedProducts[] {
+    let op: OrderedProducts[] = [];
+    for (let p of this.reservations.find(x => x.id == reservationId).products) {
+      let o: OrderedProducts = new OrderedProducts;
+      o.product = p;
+      o.quantity = this.reservations.find(x => x.id == reservationId).orderedQuantity[p.id];
+      op.push(o);
+    }
+    return op;
+  }
 
+}
 
-
-
+class OrderedProducts {
+  product: Product;
+  quantity: number; 
 }

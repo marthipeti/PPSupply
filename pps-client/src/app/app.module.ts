@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { MatToolbarModule, MatInputModule, MatTabsModule, MatButtonModule, MatCardModule, MatGridListModule, MatListModule, MatTableModule, MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { RoutingModule } from './routing/routing.module';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
+    MatExpansionModule,
     MatCardModule,
     MatGridListModule,
     MatListModule,
