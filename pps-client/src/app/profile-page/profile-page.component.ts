@@ -14,7 +14,6 @@ import {MatTabsModule} from '@angular/material/tabs';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
-  private user: User;
   private reservations: Reservation[];
   private products: {product: Product, pieces: number}[];
   //private displayedColumns = ['products', 'orderedQuantity'];
@@ -30,20 +29,19 @@ export class ProfilePageComponent implements OnInit {
 
   async ngOnInit() {
     if(this.authService.isLoggedIn){
-      this.user = await this.authService.user;
-      this.reservations = await this.reservationService.getReservationsByUser(this.user);
+      this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
     }else{
       this.router.navigate(['login'])
     }
   }
 
-  public makeArray(): void{
+  /*public makeArray(): void{
     for(let reservation of this.reservations){
       for(let product of reservation.products){
         this.products.push(product);
       }
     }
-  }
+  }*/
 
 
 

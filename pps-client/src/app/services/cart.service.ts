@@ -14,7 +14,8 @@ export class CartService {
   private reservation: Reservation = {
     id: null,
     user: null,
-    products: null
+    products: null,
+    orderedQuantity: null
   };
 
   constructor(

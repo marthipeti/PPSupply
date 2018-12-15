@@ -34,8 +34,23 @@ export class ProductPageComponent implements OnInit {
   }
 
   async toCart(id: number, pieces: number) {
+    if(this.cartService.getCart().products === null){
+      this.cartService.getCart().products = [];
+    }
+    //let products:  { product: Product, pieces: number }[];
+    let product : Product = await this.productService.getProduct(id);
+    let bool : boolean = false;
     if(pieces != undefined){
-      this.cartService.addToCart(await this.productService.getProduct(id),pieces);
+      for(let cartProduct of this.cartService.getProducts()){
+        if(product.id === cartProduct.product.id){
+          cartProduct.pieces = Number(cartProduct.pieces) + Number(pieces);
+          bool = true;
+          break;
+        }
+      }
+      if(!bool){
+        this.cartService.addToCart(product, pieces);
+      }
     }
   }
   

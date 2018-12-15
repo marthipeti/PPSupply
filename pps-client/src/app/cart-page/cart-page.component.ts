@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { Reservation } from '../classes/reservation';
+import { OrderedQuantity } from '../classes/orderedQuantity';
 
 @Component({
   selector: 'app-cart-page',
@@ -16,11 +17,7 @@ import { Reservation } from '../classes/reservation';
 export class CartPageComponent implements OnInit {
   private cart: Cart;
   private displayedColumns = ['name','quantity','delete'];
-  private reservation: Reservation = {
-    id: null,
-    user: null,
-    products: null
-  };
+  private reservation = new Reservation();
 
   constructor(
     private authService: AuthService,
@@ -52,17 +49,16 @@ export class CartPageComponent implements OnInit {
   sendReservation() {
     this.cart.products.length == 0 ? this.noProductMsg() : null;
     this.reservation.user = this.authService.user;
-    this.reservation.products = this.cart.products;
-    //this.cart.user = this.authService.user;
-    console.log(this.reservation.user);
-    //console.log(this.cart.cartQuantity);
-    console.log(this.reservation.products);
+    this.reservation.products = [];
+    for(let i in this.cart.products){
+      this.reservation.products.push(this.cartService.getCart().products[i].product);
+      let productId: number = this.cart.products[i].product.id;
+      let quantity: number = this.cart.products[i].pieces;
+      this.reservation.orderedQuantity[productId] = quantity;
+    }
+    console.log(this.reservation);
     this.reservationService.addReservation(this.reservation);
-
-    
-    //this.cartService.sendReservation();
-    //this.cart = this.cartService.getCart();
+    this.cartService.getCart().products = null;
     this.cartService.getCart();
-    //this.router.navigate(['cart']);
   }
 }

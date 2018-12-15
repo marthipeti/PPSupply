@@ -1,14 +1,15 @@
-<div *ngIf="authService.isLoggedIn" id="page">
+<div id="page" *ngIf="authService.isLoggedIn">
   <mat-tab-group>
     <mat-tab label="Adatok">
       <mat-card>
         <mat-card-title>
-          Hello {{user.name}}!
+          Hello {{authService.user.name}}!
         </mat-card-title>
         <mat-divider></mat-divider>
         <mat-card-content id="div">
-          <h3>Felhasználónév: {{user.name}}</h3>
-          <h3>Jogosultág: {{user.role}}</h3>
+          <h3>Felhasználónév: {{authService.user.userName}}</h3>
+          <h3>E-mail cím: {{authService.user.email}}</h3>
+          <h3>Jogosultág: {{authService.user.role}}</h3>
         </mat-card-content>
         <br>
       </mat-card>
