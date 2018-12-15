@@ -9,8 +9,8 @@
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
       <td mat-cell *matCellDef="let product"> {{product.pieces}}db
-          <button class="inc-dec" mat-button>-</button>
-          <button class="inc-dec" mat-button>+</button> 
+          <button class="inc-dec" routerLink="cart" mat-button (click)="decrementQuantity(product.product)">-</button>
+          <button class="inc-dec" mat-button (click)="incrementQuantity(product.product)">+</button> 
       </td>
     </ng-container>
     <ng-container matColumnDef="delete">

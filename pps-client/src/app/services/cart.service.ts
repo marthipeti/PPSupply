@@ -5,6 +5,7 @@ import { HttpService } from './http.service';
 import { User } from '../classes/user';
 import { ReservationService } from './reservation.service';
 import { Reservation } from '../classes/reservation';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,11 +43,46 @@ export class CartService {
     }
   }
 
+  public incrementQuantity(product: Product): void {
+    let index = this.cart.products.findIndex(x => x.product === product);
+    let product2 = this.getProduct(this.cart.products[index].product.id);
+    if (index !== -1) {
+      if (this.cart.products[index].pieces >= product2.quantity) {
+        this.cart.products[index].pieces = product2.quantity;
+      } else {
+        this.cart.products[index].pieces++;
+      }
+
+    }
+  }
+
+  public decrementQuantity(product: Product): void {
+    let index = this.cart.products.findIndex(x => x.product === product);
+    if (index !== -1) {
+      if (this.cart.products[index].pieces < 2) {
+        this.removeFromCart(product);
+      } else {
+        this.cart.products[index].pieces--;
+      }
+
+    }
+  }
+
   public getProducts(): { product: Product, pieces: number }[] {
     return this.cart.products;
   }
 
-  public sendReservation(): void {
+  public getProduct(id: number): Product{
+    for(let i of this.getProducts()){
+      if(i.product.id === id){
+        return i.product;
+      }else{
+        return null;
+      }
+    }
+  }
+
+  /*public sendReservation(): void {
     //this.reservation.user = this.cart.user;
     //this.reservation.products = this.cart.products;
     //console.log(this.cart);
@@ -64,11 +100,11 @@ export class CartService {
       product.tags = i.product.tags;
       product.addToCart = i.product.addToCart;
       this.reservation.products.push(product, i.pieces);
-    }*/
+    }
     //console.log(this.reservation);
     this.reservationService.addReservation(this.reservation);
     this.cart = new Cart();
     this.cart.products = [];
-  }
+}*/
 
 }

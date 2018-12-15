@@ -43,7 +43,11 @@ export class ProductPageComponent implements OnInit {
     if(pieces != undefined){
       for(let cartProduct of this.cartService.getProducts()){
         if(product.id === cartProduct.product.id){
-          cartProduct.pieces = Number(cartProduct.pieces) + Number(pieces);
+          if(Number(cartProduct.pieces) + Number(pieces) > cartProduct.product.quantity){
+            cartProduct.pieces = cartProduct.product.quantity;
+          }else{
+            cartProduct.pieces = Number(cartProduct.pieces) + Number(pieces);
+          }
           bool = true;
           break;
         }

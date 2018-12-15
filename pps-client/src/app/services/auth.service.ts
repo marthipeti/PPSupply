@@ -22,11 +22,9 @@ export class AuthService {
       const user: User = await this.httpService.post('users/login', username) as User;
       this.isLoggedIn = true;
       this.user = user;
-      console.log(user);
       return Promise.resolve(user);
     } catch (e) {
       window.localStorage.setItem('token', '');
-      console.error(e);
       return Promise.reject(e);
     }
   }
