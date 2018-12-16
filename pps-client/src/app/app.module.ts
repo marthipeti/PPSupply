@@ -16,7 +16,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatGridListModule,
     MatListModule,
     MatTableModule,
-    MatFileUploadModule,
     MatSelectModule,
     MatFormFieldModule,
     BrowserAnimationsModule,

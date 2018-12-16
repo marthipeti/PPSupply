@@ -103,11 +103,9 @@ export class ProfilePageComponent implements OnInit {
   private async onSubmit() {
     const name = this.addProductForm.get('name').value;
     const description = this.addProductForm.get('description').value;
-    const quantity = 1;
+    const quantity = parseInt(this.addProductForm.get('quantity').value);
     try {
-      let q: number = parseInt(this.addProductForm.get('quantity').value);
-      if (q < 1) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
-      console.log(q);
+      if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
     } catch (e) {
       this.message = e;
       console.log(this.message);
