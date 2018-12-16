@@ -13,33 +13,42 @@
           <h3>Jogosultág: {{authService.user.role}}</h3>
         </mat-card-content>
         <br>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Adatok szerkesztése
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
       </mat-card>
     </mat-tab>
     <mat-tab label="Rendeléseim">
       <mat-accordion *ngFor="let reservation of reservations">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
             <mat-panel-title> {{reservation.id}} </mat-panel-title>
             <mat-panel-description> {{getReservationAsString(reservation.id)}} </mat-panel-description>
-            </mat-expansion-panel-header>
-            <table mat-table [dataSource]="getReservationProducts(reservation.id)" class="mat-elevation-z1">
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let product"> {{product.product.id}} </td>
-              </ng-container>
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Termék </th>
-                <td mat-cell *matCellDef="let product"> {{product.product.name}} </td>
-              </ng-container>
-              <ng-container matColumnDef="quantity">
-                <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
-                <td mat-cell *matCellDef="let product"> {{product.quantity}}db </td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <button mat-button (click)="deleteOrder(reservation.id)" routerLink="profile">Visszamondás</button>
-          </mat-expansion-panel>
+          </mat-expansion-panel-header>
+          <table mat-table [dataSource]="getReservationProducts(reservation.id)" class="mat-elevation-z1">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let product"> {{product.product.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Termék </th>
+              <td mat-cell *matCellDef="let product"> {{product.product.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
+              <td mat-cell *matCellDef="let product"> {{product.quantity}}db </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <button mat-button (click)="deleteOrder(reservation.id)" routerLink="profile">Visszamondás</button>
+        </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
     <mat-tab label="Termék hozzáadás" *ngIf="authService.user.role==='ROLE_ADMIN'">
@@ -66,8 +75,7 @@
         <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
         <br>
         <button mat-raised-button color="warn">{{message}}</button>
-
-      </form>
+        </form>
       </mat-card>
       <br>
     </mat-tab>
