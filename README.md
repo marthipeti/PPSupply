@@ -188,3 +188,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 - hozzáadott termékek számát lehet csökkenteni vagy növelni, illetve teljesen kitörölni
 - megrendelés
 
+##Kapcsolat a szerverrel
+
+A kliensben egy http.service osztállyal kapcsolódtunk a szerverhez, aminek generikus metódusai vannak az összes kérésről. A kérések Promise-t használnak az adatok lekérésére.
+
