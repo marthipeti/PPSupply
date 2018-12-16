@@ -11,6 +11,7 @@ import { OrderedQuantity } from '../classes/orderedQuantity';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
+import { ProductService } from '../services/product.service';
 
 
 
@@ -33,6 +34,7 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private reservationService: ReservationService,
+    private productService: ProductService,
     private productMsg: MatSnackBar,
     private router: Router,
     private fb: FormBuilder,
@@ -107,22 +109,31 @@ export class ProfilePageComponent implements OnInit {
   }
 
   private async onSubmit() {
-    const name = this.addProductForm.get('name').value;
-    const description = this.addProductForm.get('description').value;
-    const quantity = parseInt(this.addProductForm.get('quantity').value);
     try {
+      const name = this.addProductForm.get('name').value;
+      const description = this.addProductForm.get('description').value;
+      const quantity = parseInt(this.addProductForm.get('quantity').value);
       if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
+      let p: Product = new Product();
+      p.name = name;
+      p.description = description;
+      p.quantity = quantity;
+      p.image = '';
+      let tags = this.tagListForm.value;
+      let tagsToAdd: Tag[] = [];
+      for (let t in tags) {
+        let k: Tag = this.tagList.find(x => x.text == t)
+        console.log(k);
+        tagsToAdd.push(this.tagList.find(x => x.text == t));
+      }
+      
+      p.tags = tagsToAdd;
+      console.log(p);
+      this.productService.addProduct(p);
     } catch (e) {
       this.message = e;
       console.log(this.message);
     }
-/*
-    try {
-      await this.authService.login(username, password);
-      this.router.navigate(['/']);
-    } catch (e) {
-      this.message = 'Sikertelen bejelentkezés!';
-    }*/
   }
 }
 

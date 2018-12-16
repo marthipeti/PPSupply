@@ -22,17 +22,10 @@ export class ProductService {
     return this.httpService.get<Product>(this.route + '/' + id);
   }
   
-  public async addProduct(name: string, description: string, quantity: number, tags: Tag[]): Promise<User> {
+  public async addProduct(product: Product) {
     try {
-      /*const token = btoa(username + ':' + password);
-      window.localStorage.setItem('token', token);
-      const user: User = await this.httpService.post('users/login', username) as User;
-      this.isLoggedIn = true;
-      this.user = user;
-      return Promise.resolve(user);*/
+      await this.httpService.post<Product>(this.route, product);
     } catch (e) {
-      window.localStorage.setItem('token', '');
-      return Promise.reject(e);
     }
   }
 
