@@ -7,9 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { Reservation } from '../classes/reservation';
-import { OrderedQuantity } from '../classes/orderedQuantity';
 import { ProductService } from '../services/product.service';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-cart-page',
