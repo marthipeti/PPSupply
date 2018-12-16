@@ -14,6 +14,8 @@ const routes: Route[] = [
 
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'products', component: ProductPageComponent },
+  { path: 'products/products', component: ProductPageComponent },
+  { path: 'products/products/products', redirectTo: '/products', pathMatch: 'full' },
   { path: 'profile', component: ProfilePageComponent },
   { path: 'profile/profile', component: ProfilePageComponent },
   { path: 'profile/profile/profile', redirectTo: '/profile', pathMatch: 'full' },

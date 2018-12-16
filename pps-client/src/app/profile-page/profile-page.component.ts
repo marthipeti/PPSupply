@@ -134,7 +134,6 @@ export class ProfilePageComponent implements OnInit {
       for (let t of tags) {
         tagsToAdd.push(this.tagList.find(x => x.text == t));
       }
-
       p.tags = tagsToAdd;
       console.log(p);
       this.productService.addProduct(p);
