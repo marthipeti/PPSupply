@@ -48,6 +48,13 @@ export class ProfilePageComponent implements OnInit {
     tags: ['', Validators.required]
   });
 
+  private changeProfile = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    userName: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+
   async ngOnInit() {
     if (this.authService.isLoggedIn) {
       this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
@@ -134,6 +141,19 @@ export class ProfilePageComponent implements OnInit {
       this.message = e;
       console.log(this.message);
     }
+  }
+
+  onProfileSubmit(){
+    const name = this.changeProfile.get('name').value;
+    const email = this.changeProfile.get('email').value;
+    const userName =this.changeProfile.get('userName').value;
+    const password =this.changeProfile.get('password').value;
+    /*try {
+      if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
+    } catch (e) {
+      this.message = e;
+      console.log(this.message);
+    }*/
   }
 }
 
