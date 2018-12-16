@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material';
 import { User } from '../classes/user';
 import { forEach } from '@angular/router/src/utils/collection';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private productMsg: MatSnackBar
+    private productMsg: MatSnackBar,
+    private authService: AuthService
 
   ) { }
 
@@ -62,5 +64,10 @@ export class ProductPageComponent implements OnInit {
     quantity ? this.productMsg.open( quantity + "db " + productName + " hozzáadva a kosárhoz" , null, {
       duration: 2000,
     }) : null;
+  }
+
+  async deleteProduct(productId: number) {
+    this.productService.deleteProduct(productId);
+    this.products = await this.productService.getProducts();
   }
 }

@@ -29,4 +29,10 @@ export class ProductService {
     }
   }
 
+  public async deleteProduct(id: number){
+    try{
+      await this.httpService.delete<Product>(this.route + "/" + id);
+    } catch(e) {}
+  }
+
 }
