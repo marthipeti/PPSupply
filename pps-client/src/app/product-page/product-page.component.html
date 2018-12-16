@@ -23,7 +23,7 @@
           </mat-form-field>
           <mat-card-actions >
             <button mat-stroked-button disabled="{{ product.quantity === 0 }}" (click)="productAddedMsg(product.name, product.pieceToCart);toCart(product.id,product.pieceToCart)">Kosárba</button>
-            <button *ngIf="authService.user != null && authService.user.role==='ROLE_ADMIN'" mat-flat-button type="submit" color="primary" (click)="deleteProduct(product.id)">Termék törlése</button>
+            <button *ngIf="authService.user != null && authService.user.role==='ROLE_ADMIN'" mat-flat-button type="submit" color="primary" (click)="deleteProduct(product.id)" routerLink="products">Termék törlése</button>
           </mat-card-actions>
         </div>
       </mat-card>
