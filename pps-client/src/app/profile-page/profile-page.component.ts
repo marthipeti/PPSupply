@@ -150,17 +150,27 @@ export class ProfilePageComponent implements OnInit {
 
   private async onProfileSubmit() {
     const id = this.authService.user.id;
-    const name = this.changeProfile.get('name').value;
-    const email = this.changeProfile.get('email').value;
-    const userName = this.changeProfile.get('userName').value;
+    let name: string = this.changeProfile.get('name').value;
+    let email: string = this.changeProfile.get('email').value;
+    let userName: string = this.changeProfile.get('userName').value;
+    if(name===""){
+      name=this.authService.user.name;
+    }
+    if(email===""){
+      email=this.authService.user.email;
+    }
+    if(userName===""){
+      userName=this.authService.user.userName;
+    }
     let user: User = new User();
     user.name = name;
     user.email = email;
     user.userName = userName;
     user.role = this.authService.user.role;
     user.password = this.authService.user.password;
-    console.log(user);
     this.userService.putUser(id, user);
+    this.authService.user=user;
+    this.router.navigate(['profile']);
   }
 }
 
