@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Reservation } from '../classes/reservation';
 import { ProductService } from './product.service';
 import { User } from '../classes/user';
 import { AuthService } from './auth.service';
-import { Product } from '../classes/product';
 import { HttpService } from './http.service';
 import { Router } from '@angular/router';
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../classes/product';
 import { HttpService } from './http.service';
-import { Tag } from '../classes/tag';
 
 @Injectable({
   providedIn: 'root'

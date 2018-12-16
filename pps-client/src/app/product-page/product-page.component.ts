@@ -3,9 +3,6 @@ import { Product } from '../classes/product';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 import { MatSnackBar } from '@angular/material';
-import { User } from '../classes/user';
-import { forEach } from '@angular/router/src/utils/collection';
-import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { AuthService } from '../services/auth.service';
 
 

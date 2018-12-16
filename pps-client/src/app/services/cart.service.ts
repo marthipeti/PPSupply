@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { Product } from '../classes/product';
 import { Cart } from '../classes/cart';
 import { HttpService } from './http.service';
-import { User } from '../classes/user';
 import { ReservationService } from './reservation.service';
 import { Reservation } from '../classes/reservation';
-import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
