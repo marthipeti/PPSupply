@@ -20,6 +20,37 @@
                 Adatok szerkesztése
               </mat-panel-title>
             </mat-expansion-panel-header>
+            <mat-card>
+              <form [formGroup]="changeProfile" (ngSubmit)="onProfileSubmit()">
+                Név:
+                <mat-form-field>
+                  <input matInput formControlName="name" placeholder="{{authService.user.name}}">
+                  <mat-error *ngIf="changeProfile.get('name').invalid"></mat-error>
+                </mat-form-field>
+                <br>
+                E-mail cím:
+                <mat-form-field>
+                  <input matInput formControlName="email" placeholder="{{authService.user.email}}">
+                  <mat-error *ngIf="changeProfile.get('email').invalid"></mat-error>
+                </mat-form-field>
+                <br>
+                Felhasználónév:
+                <mat-form-field>
+                  <input matInput formControlName="userName" placeholder="{{authService.user.userName}}">
+                  <mat-error *ngIf="changeProfile.get('userName').invalid"></mat-error>
+                </mat-form-field>
+                <br>
+                Jelszó:
+                <mat-form-field>
+                  <input matInput formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error *ngIf="changeProfile.get('password').invalid"></mat-error>
+                </mat-form-field>
+                <br>
+                <button mat-flat-button type="submit" color="primary">Adatok szerkesztése</button>
+                <br>
+              </form>
+            </mat-card>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card>
@@ -53,28 +84,28 @@
     </mat-tab>
     <mat-tab label="Termék hozzáadás" *ngIf="authService.user.role==='ROLE_ADMIN'">
       <mat-card>
-      <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-          <input matInput formControlName="name" placeholder="Név">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput formControlName="description" placeholder="Leírás">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput formControlName="quantity" placeholder="Mennyiség">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <mat-select placeholder="Tagek" [formControl]="tagListForm" multiple>
-            <mat-option *ngFor="let tag of tagList" [value]="tag.text">{{tag.text}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br>
-        <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
-        <br>
-        <button mat-raised-button color="warn">{{message}}</button>
+        <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput formControlName="name" placeholder="Név">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput formControlName="description" placeholder="Leírás">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput formControlName="quantity" placeholder="Mennyiség">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="Tagek" [formControl]="tagListForm" multiple>
+              <mat-option *ngFor="let tag of tagList" [value]="tag.text">{{tag.text}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
+          <br>
+          <button mat-raised-button color="warn">{{message}}</button>
         </form>
       </mat-card>
       <br>
