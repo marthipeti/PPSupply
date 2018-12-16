@@ -47,6 +47,7 @@ export class ProfilePageComponent implements OnInit {
     name: ['', Validators.required],
     quantity: ['', Validators.required],
     description: ['', Validators.required],
+    image: [''],
     tags: ['', Validators.required]
   });
 
@@ -123,6 +124,7 @@ export class ProfilePageComponent implements OnInit {
       const name = this.addProductForm.get('name').value;
       const description = this.addProductForm.get('description').value;
       const quantity = parseInt(this.addProductForm.get('quantity').value);
+      const image = this.addProductForm.get('image').value;
       if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
       if (name === '') throw 'Név nem lehet üres!';
       if (description === '') throw 'Leírás nem lehet üres!';
@@ -130,7 +132,7 @@ export class ProfilePageComponent implements OnInit {
       p.name = name;
       p.description = description;
       p.quantity = quantity;
-      p.image = '';
+      p.image = image;
       let tags = this.tagListForm.value;
       let tagsToAdd: Tag[] = [];
       if (tags != null) {
@@ -140,6 +142,7 @@ export class ProfilePageComponent implements OnInit {
       }
       p.tags = tagsToAdd;
       this.productService.addProduct(p);
+      this.router.navigateByUrl('/products');
     } catch (e) {
       this.message = e;
     }
