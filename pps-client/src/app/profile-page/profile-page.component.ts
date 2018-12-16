@@ -139,12 +139,9 @@ export class ProfilePageComponent implements OnInit {
       }
       }
       p.tags = tagsToAdd;
-      console.log(p);
       this.productService.addProduct(p);
     } catch (e) {
-      console.log(e);
       this.message = e;
-      console.log(this.message);
     }
   }
 
