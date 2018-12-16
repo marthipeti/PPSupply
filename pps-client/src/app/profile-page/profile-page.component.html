@@ -24,27 +24,17 @@
               <form [formGroup]="changeProfile" (ngSubmit)="onProfileSubmit()">
                 Név:
                 <mat-form-field>
-                  <input matInput formControlName="name" placeholder="{{authService.user.name}}">
-                  <mat-error *ngIf="changeProfile.get('name').invalid"></mat-error>
+                  <input matInput formControlName="name" value="{{authService.user.name}}">
                 </mat-form-field>
                 <br>
                 E-mail cím:
                 <mat-form-field>
-                  <input matInput formControlName="email" placeholder="{{authService.user.email}}">
-                  <mat-error *ngIf="changeProfile.get('email').invalid"></mat-error>
+                  <input matInput formControlName="email" value="{{authService.user.email}}">
                 </mat-form-field>
                 <br>
                 Felhasználónév:
                 <mat-form-field>
-                  <input matInput formControlName="userName" placeholder="{{authService.user.userName}}">
-                  <mat-error *ngIf="changeProfile.get('userName').invalid"></mat-error>
-                </mat-form-field>
-                <br>
-                Jelszó:
-                <mat-form-field>
-                  <input matInput formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
-                  <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  <mat-error *ngIf="changeProfile.get('password').invalid"></mat-error>
+                  <input matInput formControlName="userName" value="{{authService.user.userName}}">
                 </mat-form-field>
                 <br>
                 <button mat-flat-button type="submit" color="primary">Adatok szerkesztése</button>

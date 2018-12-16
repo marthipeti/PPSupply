@@ -12,6 +12,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 
 
@@ -33,6 +34,7 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private reservationService: ReservationService,
     private productService: ProductService,
     private productMsg: MatSnackBar,
@@ -49,6 +51,7 @@ export class ProfilePageComponent implements OnInit {
   });
 
   private changeProfile = this.fb.group({
+    id: ['', Validators.required],
     name: ['', Validators.required],
     email: ['', Validators.required],
     userName: ['', Validators.required],
@@ -83,11 +86,11 @@ export class ProfilePageComponent implements OnInit {
     this.reservations = this.getReservations();
   }
 
-  getReservations(): Reservation[]{
+  getReservations(): Reservation[] {
     return this.reservations;
   }
 
-  getReservationProducts(reservationId: number):  OrderedProducts[] {
+  getReservationProducts(reservationId: number): OrderedProducts[] {
     let op: OrderedProducts[] = [];
     for (let p of this.reservations.find(x => x.id == reservationId).products) {
       let o: OrderedProducts = new OrderedProducts;
@@ -131,7 +134,7 @@ export class ProfilePageComponent implements OnInit {
       for (let t of tags) {
         tagsToAdd.push(this.tagList.find(x => x.text == t));
       }
-      
+
       p.tags = tagsToAdd;
       console.log(p);
       this.productService.addProduct(p);
@@ -141,21 +144,23 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  onProfileSubmit(){
+  private async onProfileSubmit() {
+    const id = this.authService.user.id;
     const name = this.changeProfile.get('name').value;
     const email = this.changeProfile.get('email').value;
-    const userName =this.changeProfile.get('userName').value;
-    const password =this.changeProfile.get('password').value;
-    /*try {
-      if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
-    } catch (e) {
-      this.message = e;
-      console.log(this.message);
-    }*/
+    const userName = this.changeProfile.get('userName').value;
+    let user: User = new User();
+    user.name = name;
+    user.email = email;
+    user.userName = userName;
+    user.role = this.authService.user.role;
+    user.password = this.authService.user.password;
+    console.log(user);
+    this.userService.putUser(id, user);
   }
 }
 
 class OrderedProducts {
   product: Product;
-  quantity: number; 
+  quantity: number;
 }
