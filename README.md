@@ -124,11 +124,11 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ## Új termék hozzáadása adminként
 1. A megfelelő mezők kitöltése:
-- Név: tetszőleges nem üres string
-- Leírás: tetszőleges nem üres string
-- Mennyiség: 0-nál nagyobb szám
-- Kép: a termékhez tartozó kép fájlneve vagy üres
-- Tagek: üres vagy megfelelő tagek kiválasztása a legördülő listából
+	- Név: tetszőleges nem üres string
+	- Leírás: tetszőleges nem üres string
+	- Mennyiség: 0-nál nagyobb szám
+	- Kép: a termékhez tartozó kép fájlneve vagy üres
+	- Tagek: üres vagy megfelelő tagek kiválasztása a legördülő listából
 2. „Termék hozzáadása” gomb megnyomásának hatására meghívódik az ```javascriptonSubmit()``` metódus
 3. A mezők adatai mentésre kerülnek, majd validálónak
 4. Probléma esetén jelezzük a felhasználónak, hogy melyik mező validációja volt sikertelen
