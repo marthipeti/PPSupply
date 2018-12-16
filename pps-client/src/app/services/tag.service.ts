@@ -8,8 +8,7 @@ import { Product } from "../classes/product";
 })
 export class TagService {
     private route : string = "tags";
-
-
+    
     constructor(
         private httpService: HttpService,
         private tagService: TagService
