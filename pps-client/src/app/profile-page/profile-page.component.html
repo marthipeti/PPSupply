@@ -88,6 +88,10 @@
           </mat-form-field>
           <br>
           <mat-form-field>
+              <input matInput formControlName="image" placeholder="Kép">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
             <mat-select placeholder="Tagek" [formControl]="tagListForm" multiple>
               <mat-option *ngFor="let tag of tagList" [value]="tag.text">{{tag.text}}</mat-option>
             </mat-select>

@@ -3,7 +3,7 @@
   <mat-grid-list cols="4" rowHeight="3:5">
     <mat-grid-tile *ngFor="let product of products">
       <mat-card>
-        <img mat-card-image src="{{!product.image ? 'assets/img/no-image.png' : ('assets/img/' + product.image)}}" alt="No image available">
+        <img mat-card-image src="{{!product.image ? 'assets/img/no-image.png' : ('assets/img/' + product.image)}}" onerror="this.src='assets/img/no-image.png'" alt="No image available">
         <mat-divider></mat-divider>
         <mat-card-title id="title">
           {{ product.name }}
