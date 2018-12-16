@@ -128,9 +128,7 @@ export class ProfilePageComponent implements OnInit {
       p.image = '';
       let tags = this.tagListForm.value;
       let tagsToAdd: Tag[] = [];
-      for (let t in tags) {
-        let k: Tag = this.tagList.find(x => x.text == t)
-        console.log(k);
+      for (let t of tags) {
         tagsToAdd.push(this.tagList.find(x => x.text == t));
       }
       
