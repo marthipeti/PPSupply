@@ -123,7 +123,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 ![szekvencia-diagram](/images/szd.png)
 
 ## Alkalmazott könyvtárstruktúra
-1. src
+1. src (BACKEND)
 - main
 	- java
 		- hu
@@ -151,6 +151,59 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 - resources
 	- application.properties
 	- import.sql
+	
+2. src (FRONTEND)
+- **app**
+	- **calsses**
+		- _cart.ts_
+		- _orderedQuantity.ts_
+		- _product.ts_
+		- _reservation.ts_
+		- _tag.ts_
+		- _user.ts_
+	- **cart-page**
+		- _cart-page.component.css_
+		- _cart-page.component.html_
+		- _cart-page.component.ts_
+	- **contact-page**
+		- _contact-page.component.css_
+		- _contact-page.component.html_
+		- _contact-page.component.ts_
+	- **login-page**
+		- _login-page.component.css_
+		- _login-page.component.html_
+		- _login-page.component.ts_
+	- **navigation-bar**
+		- _navigation-bar.component.css_
+		- _navigation-bar.component.html_
+		- _navigation-bar.component.ts_
+	- **product-page**
+		- _product-page.component.css_
+		- _product-page.component.html_
+		- _product-page.component.ts_
+	- **profile-page**
+		- _profile-page.component.css_
+		- _profile-page.component.html_
+		- _profile-page.component.ts_
+	- **registration-page**
+		- _registration-page.component.css_
+		- _registration-page.component.html_
+		- _registration-page.component.ts_
+	- **routing**
+		- _routing.module.ts_
+	- **services**
+		- _auth.service.ts_
+		- _cart.service.ts_
+		- _http.service.ts_
+		- _product.service.ts_
+		- _reservation.service.ts_
+		- _tag.service.ts_
+		- _user.service.ts_
+	- _app.module.ts_
+
+- **assets**
+	- **img**
+	
 	
 # Frontend
 
