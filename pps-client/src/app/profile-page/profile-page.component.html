@@ -19,7 +19,7 @@
             <mat-expansion-panel>
               <mat-expansion-panel-header>
               <mat-panel-title> {{reservation.id}} </mat-panel-title>
-              <mat-panel-description> ASD </mat-panel-description>
+              <mat-panel-description> {{getReservationAsString(reservation.id)}} </mat-panel-description>
               </mat-expansion-panel-header>
               <table mat-table [dataSource]="getReservationProducts(reservation.id)" class="mat-elevation-z1">
                 <ng-container matColumnDef="id">

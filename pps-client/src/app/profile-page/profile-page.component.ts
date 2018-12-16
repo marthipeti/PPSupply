@@ -71,6 +71,17 @@ export class ProfilePageComponent implements OnInit {
     return op;
   }
 
+  getReservationAsString(reservationId: number): string {
+    let s: string = "";
+    for (let p of this.reservations.find(x => x.id == reservationId).products) {
+      s = s + p.name + ", ";
+    }
+    if (s.length > 15) {
+      s = s.substring(0, 15) + "..."
+    }
+    return s;
+  }
+
 }
 
 class OrderedProducts {
