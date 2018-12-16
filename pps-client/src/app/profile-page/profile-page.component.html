@@ -1,5 +1,5 @@
 <div id="page" *ngIf="authService.isLoggedIn">
-  <mat-tab-group>
+  <mat-tab-group [selectedIndex]="selectedIndex">
     <mat-tab label="Adatok">
       <mat-card>
         <mat-card-title>
@@ -15,42 +15,45 @@
       </mat-card>
     </mat-tab>
     <mat-tab label="Rendeléseim">
-        <mat-accordion *ngFor="let reservation of reservations">
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-              <mat-panel-title> {{reservation.id}} </mat-panel-title>
-              <mat-panel-description> {{getReservationAsString(reservation.id)}} </mat-panel-description>
-              </mat-expansion-panel-header>
-              <table mat-table [dataSource]="getReservationProducts(reservation.id)" class="mat-elevation-z1">
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef> ID </th>
-                  <td mat-cell *matCellDef="let product"> {{product.product.id}} </td>
-                </ng-container>
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Termék </th>
-                  <td mat-cell *matCellDef="let product"> {{product.product.name}} </td>
-                </ng-container>
-                <ng-container matColumnDef="quantity">
-                  <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
-                  <td mat-cell *matCellDef="let product"> {{product.quantity}}db </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <button mat-button>Visszamondás</button>
-            </mat-expansion-panel>
-        </mat-accordion>
-      <!--<mat-grid-list cols="4" rowHeight="3:5">
-        <mat-grid-tile *ngFor="let reservation of reservations">
-          <mat-card id="card">
-            <mat-card-title id="title">Rendelés azonosítója: {{reservation.id}}</mat-card-title>
-            <mat-card-content id="content" *ngFor="let product of reservation.products">
-              <p id="description">{{product.name}}</p>
-            </mat-card-content>
-            <button mat-stroked-button id="delete" routerLink="" (click)="deleteReservation(reservation)">Rendelés törlése</button>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>-->
+      <mat-accordion *ngFor="let reservation of reservations">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-panel-title> {{reservation.id}} </mat-panel-title>
+            <mat-panel-description> {{getReservationAsString(reservation.id)}} </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table mat-table [dataSource]="getReservationProducts(reservation.id)" class="mat-elevation-z1">
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let product"> {{product.product.id}} </td>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Termék </th>
+                <td mat-cell *matCellDef="let product"> {{product.product.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
+                <td mat-cell *matCellDef="let product"> {{product.quantity}}db </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <button mat-button (click)="deleteOrder(reservation.id)" routerLink="profile">Visszamondás</button>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Termék hozzáadás" *ngIf="authService.user.role==='ROLE_ADMIN'">
+      <mat-card>
+        <mat-card-title>
+          Hello {{authService.user.name}}!
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content id="div">
+          <h3>Felhasználónév: {{authService.user.userName}}</h3>
+          <h3>E-mail cím: {{authService.user.email}}</h3>
+          <h3>Jogosultág: {{authService.user.role}}</h3>
+        </mat-card-content>
+        <br>
+      </mat-card>
     </mat-tab>
   </mat-tab-group>
 </div>

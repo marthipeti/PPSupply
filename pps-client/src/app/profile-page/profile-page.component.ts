@@ -20,6 +20,7 @@ export class ProfilePageComponent implements OnInit {
   private products: { product: Product, pieces: number }[];
   private orderedArray: number[];
   private displayedColumns = ['id', 'name', 'quantity'];
+  public selectedIndex: number = 1;
 
 
   constructor(
@@ -82,6 +83,11 @@ export class ProfilePageComponent implements OnInit {
     return s;
   }
 
+  async deleteOrder(reservationId: number) {
+    this.reservationService.deleteReservation(reservationId);
+    this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
+    this.orderedArray = this.makeArray(this.reservations);
+  }
 }
 
 class OrderedProducts {

@@ -15,11 +15,12 @@ const routes: Route[] = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'products', component: ProductPageComponent },
   { path: 'profile', component: ProfilePageComponent },
+  { path: 'profile/profile', component: ProfilePageComponent },
+  { path: 'profile/profile/profile', redirectTo: '/profile', pathMatch: 'full' },
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'cart/cart', component: CartPageComponent },
-  { path: 'profile/profile', component: ProfilePageComponent },
   { path: 'cart/cart/cart', redirectTo: '/cart', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent }
 ];
