@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { MatToolbarModule, MatBadgeModule, MatInputModule, MatTabsModule, MatButtonModule, MatCardModule, MatGridListModule, MatListModule, MatTableModule, MatSelectModule, MatFormFieldModule } from '@angular/material';
+import { MatToolbarModule, MatChipsModule, MatBadgeModule, MatInputModule, MatTabsModule, MatButtonModule, MatCardModule, MatGridListModule, MatListModule, MatTableModule, MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RoutingModule } from './routing/routing.module';
@@ -44,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatSelectModule,
     MatBadgeModule,
+    MatChipsModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,

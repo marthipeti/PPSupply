@@ -42,6 +42,7 @@
       </mat-accordion>
     </mat-tab>
     <mat-tab label="Termék hozzáadás" *ngIf="authService.user.role==='ROLE_ADMIN'">
+      <mat-card>
       <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
           <input matInput formControlName="name" placeholder="Név">
@@ -55,11 +56,18 @@
           <input matInput formControlName="quantity" placeholder="Mennyiség">
         </mat-form-field>
         <br>
+        <mat-form-field>
+            <mat-select placeholder="Toppings" [formControl]="toppings" multiple>
+              <mat-option *ngFor="let tag of tagList" [value]="tag.name">{{tag.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <br>
         <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
-        <div>
-          {{message}}
-        </div>
+        <br>
+        <button mat-raised-button color="warn">{{message}}</button>
+
       </form>
+      </mat-card>
       <br>
     </mat-tab>
   </mat-tab-group>
