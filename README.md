@@ -122,20 +122,6 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 
 ![szekvencia-diagram](/images/szd.png)
 
-## Új termék hozzáadása adminként
-1. A megfelelő mezők kitöltése:
-	- Név: tetszőleges nem üres string
-	- Leírás: tetszőleges nem üres string
-	- Mennyiség: 0-nál nagyobb szám
-	- Kép: a termékhez tartozó kép fájlneve vagy üres
-	- Tagek: üres vagy megfelelő tagek kiválasztása a legördülő listából
-2. „Termék hozzáadása” gomb megnyomásának hatására meghívódik az ```javascriptonSubmit()``` metódus
-3. A mezők adatai mentésre kerülnek, majd validálónak
-4. Probléma esetén jelezzük a felhasználónak, hogy melyik mező validációja volt sikertelen
-5. Sikeres validáció után a productService segítségével egy HTTP POST requestben elküldjük az új terméket a szervernek
-6. A program visszairányít minket a „Termékek” oldalra
-
-
 ## Alkalmazott könyvtárstruktúra
 1. src
 - main
@@ -165,4 +151,40 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 - resources
 	- application.properties
 	- import.sql
+	
+# Frontend
+
+## Új termék hozzáadása adminként
+1. A megfelelő mezők kitöltése:
+	- Név: tetszőleges nem üres string
+	- Leírás: tetszőleges nem üres string
+	- Mennyiség: 0-nál nagyobb szám
+	- Kép: a termékhez tartozó kép fájlneve vagy üres
+	- Tagek: üres vagy megfelelő tagek kiválasztása a legördülő listából
+2. „Termék hozzáadása” gomb megnyomásának hatására meghívódik az ```javascriptonSubmit()``` metódus
+3. A mezők adatai mentésre kerülnek, majd validálónak
+4. Probléma esetén jelezzük a felhasználónak, hogy melyik mező validációja volt sikertelen
+5. Sikeres validáció után a productService segítségével egy HTTP POST requestben elküldjük az új terméket a szervernek
+6. A program visszairányít minket a „Termékek” oldalra
+
+##Kliensoldali szolgáltatások
+
+###Bejelentkezés/kijelentkezés
+
+###Profilom
+- bejelentkezés után saját adatok szerkesztése (felhasználónév, e-mail cím, saját név)
+- rendelések a profil menüpont alatt a Rendeléseim oldalon találhatóak meg
+- a rendeléseket vissza lehet mondani
+- (ADMIN) termék hozzáadása fülnél lehet új terméket hozzáadni
+
+###Termékek
+- termékek böngészése
+- kosárba rakás
+
+###Kapcsolat
+- cég adatait tartalmazza
+
+###Kosár
+- hozzáadott termékek számát lehet csökkenteni vagy növelni, illetve teljesen kitörölni
+- megrendelés
 
