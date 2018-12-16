@@ -220,28 +220,28 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 5. Sikeres validáció után a productService segítségével egy HTTP POST requestben elküldjük az új terméket a szervernek
 6. A program visszairányít minket a „Termékek” oldalra
 
-##Kliensoldali szolgáltatások
+## Kliensoldali szolgáltatások
 
-###Bejelentkezés/kijelentkezés
+### Bejelentkezés/kijelentkezés
 
-###Profilom
+### Profilom
 - bejelentkezés után saját adatok szerkesztése (felhasználónév, e-mail cím, saját név)
 - rendelések a profil menüpont alatt a Rendeléseim oldalon találhatóak meg
 - a rendeléseket vissza lehet mondani
 - (ADMIN) termék hozzáadása fülnél lehet új terméket hozzáadni
 
-###Termékek
+### Termékek
 - termékek böngészése
 - kosárba rakás
 
-###Kapcsolat
+### Kapcsolat
 - cég adatait tartalmazza
 
-###Kosár
+### Kosár
 - hozzáadott termékek számát lehet csökkenteni vagy növelni, illetve teljesen kitörölni
 - megrendelés
 
-##Kapcsolat a szerverrel
+## Kapcsolat a szerverrel
 
 A kliensben egy http.service osztállyal kapcsolódtunk a szerverhez, aminek generikus metódusai vannak az összes kérésről. A kérések Promise-t használnak az adatok lekérésére.
 
