@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material';
 import { RouterModule, Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { OrderedQuantity } from '../classes/orderedQuantity';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
 
@@ -26,7 +26,8 @@ export class ProfilePageComponent implements OnInit {
   private displayedColumns = ['id', 'name', 'quantity'];
   public selectedIndex: number = 1;
   private message = '';
-  public tagList: Promise<Tag[]> = this.tagService.getTags();
+  public tagList: Tag[];
+  public tagListForm = new FormControl();
 
 
   constructor(
@@ -49,6 +50,7 @@ export class ProfilePageComponent implements OnInit {
     if (this.authService.isLoggedIn) {
       this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
       this.orderedArray = this.makeArray(this.reservations);
+      this.tagList = await this.tagService.getTags();
       //console.log(this.orderedArray);
     } else {
       this.router.navigate(['login'])

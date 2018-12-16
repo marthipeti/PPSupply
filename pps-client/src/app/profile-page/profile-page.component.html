@@ -1,4 +1,5 @@
 <div id="page" *ngIf="authService.isLoggedIn">
+  <h1>Profilom</h1>
   <mat-tab-group [selectedIndex]="selectedIndex">
     <mat-tab label="Adatok">
       <mat-card>
@@ -57,10 +58,10 @@
         </mat-form-field>
         <br>
         <mat-form-field>
-            <mat-select placeholder="Toppings" [formControl]="toppings" multiple>
-              <mat-option *ngFor="let tag of tagList" [value]="tag.name">{{tag.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <mat-select placeholder="Tagek" [formControl]="tagListForm" multiple>
+            <mat-option *ngFor="let tag of tagList" [value]="tag.text">{{tag.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
         <br>
         <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
         <br>
