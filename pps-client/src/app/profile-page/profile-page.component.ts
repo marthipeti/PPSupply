@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material';
 import { RouterModule, Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { OrderedQuantity } from '../classes/orderedQuantity';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -21,14 +23,23 @@ export class ProfilePageComponent implements OnInit {
   private orderedArray: number[];
   private displayedColumns = ['id', 'name', 'quantity'];
   public selectedIndex: number = 1;
+  private message = '';
 
 
   constructor(
     private authService: AuthService,
     private reservationService: ReservationService,
     private productMsg: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
+
+  private addProductForm = this.fb.group({
+    name: ['', Validators.required],
+    quantity: ['', Validators.required],
+    description: ['', Validators.required],
+    tags: ['', Validators.required]
+  });
 
   async ngOnInit() {
     if (this.authService.isLoggedIn) {
@@ -87,6 +98,27 @@ export class ProfilePageComponent implements OnInit {
     this.reservationService.deleteReservation(reservationId);
     this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
     this.orderedArray = this.makeArray(this.reservations);
+  }
+
+  private async onSubmit() {
+    const name = this.addProductForm.get('name').value;
+    const description = this.addProductForm.get('description').value;
+    const quantity = 1;
+    try {
+      let q: number = parseInt(this.addProductForm.get('quantity').value);
+      if (q < 1) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
+      console.log(q);
+    } catch (e) {
+      this.message = e;
+      console.log(this.message);
+    }
+/*
+    try {
+      await this.authService.login(username, password);
+      this.router.navigate(['/']);
+    } catch (e) {
+      this.message = 'Sikertelen bejelentkezés!';
+    }*/
   }
 }
 

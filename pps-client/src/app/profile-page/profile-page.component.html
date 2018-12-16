@@ -42,18 +42,25 @@
       </mat-accordion>
     </mat-tab>
     <mat-tab label="Termék hozzáadás" *ngIf="authService.user.role==='ROLE_ADMIN'">
-      <mat-card>
-        <mat-card-title>
-          Hello {{authService.user.name}}!
-        </mat-card-title>
-        <mat-divider></mat-divider>
-        <mat-card-content id="div">
-          <h3>Felhasználónév: {{authService.user.userName}}</h3>
-          <h3>E-mail cím: {{authService.user.email}}</h3>
-          <h3>Jogosultág: {{authService.user.role}}</h3>
-        </mat-card-content>
+      <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Név">
+        </mat-form-field>
         <br>
-      </mat-card>
+        <mat-form-field>
+          <input matInput formControlName="description" placeholder="Leírás">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput formControlName="quantity" placeholder="Mennyiség">
+        </mat-form-field>
+        <br>
+        <button mat-flat-button type="submit" color="primary">Termék hozzáadása</button>
+        <div>
+          {{message}}
+        </div>
+      </form>
+      <br>
     </mat-tab>
   </mat-tab-group>
 </div>
