@@ -11,27 +11,20 @@ A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint 
 - termékeket tehetünk be a kosárba -> *Termékek* *kosárba* *helyezése*
 
 #### Felhasználóként:
-- hozzáférhetünk a termékek listájához → *Termékek* *listázása*
+- *Vendég jog*
 - rendelést adhatunk le a készleten lévő termékekre → *Rendelés* *leadása*
 - módosíthatjuk profilunk adatait → *Profil* *szerkesztése*
 - listázhatjuk korábbi rendeléseinket → *Rendelések* *listázása*
-- törölhetjük a profilunkat → *Profil* *törlése*
 
 #### Adminisztrátorként:
-- hozzáférhetünk a termékek listájához → *Termékek* *listázása*
+- *Felhasználói jog*
 - vehetünk fel új terméket → *Termék* *felvétele*
 - törölhetünk terméket → *Termék* *törlése*
-- hozzáférhetünk felhasználók listájához → *Felhasználók* *listázása*
-- törölhetünk felhasználót → *Felhasználó* *törlése*
-- termékhez köthetük tag-et → *Tag* *hozzáadása*
-- hozzáadhatunk tag-et a listához → *Tag* *létrehozása*
-- törölhetünk tag-et → *Tag* *törlése*
-- módosíthatunk tag-et → *Tag* *módosítása*
 
 ## Szerepkörök:
-- **vendég:** Felhasználói profil nélkül böngészhet a termékek között, de nem rendelhet
-- **felhasználó:** Regisztráció után rendelhet
-- **adminisztrátor:** Kezeli a rendeléseket,felhasználókat. Szerkeszti a termékek adatbázisát. Termékekre tag-eket rakhat pl. írószer, papír, színes, akciós stb.
+- **vendég:** Felhasználói profil nélkül böngészhet a termékek között, tehet be terméket a kosárba, de nem rendelhet
+- **felhasználó:** *vendég szerepkör* + Regisztráció után rendelhet
+- **adminisztrátor:** *felhasználó szerepkör* + Szerkeszti a termékek adatbázisát
 
 ## Nem funkcionális követelmények
 - Felhasználóbarát
@@ -55,10 +48,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 	nincs hozzáférés
 -	Felhasználó: 
 
-	GET, POST, PUT, DELETE: csak saját ID (api/users/{id}) 
+	GET,PUT: csak saját ID (api/users/{id}) 
 -	Adminisztrátor:	
 
-	GET, POST, PUT, DELETE: összes ID (api/users, api/users/{id}): 
+	GET, PUT: csak saját ID (api/users/{id}): 
 
 ### Termékek táblája
 -	Vendég: 
@@ -69,7 +62,7 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 	GET: összes ID (api/products, api/products/{id})
 -	Adminisztrátor:
 
-	GET, POST, PUT, DELETE:  összes ID (api/products, api/products/{id})
+	GET, POST, DELETE:  összes ID (api/products, api/products/{id})
 
 ### Rendelések táblája
 -	Vendég: 
@@ -77,14 +70,10 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 	nincs hozzáférése
 -	Felhasználó:
 
-	GET, POST, PUT, DELETE: csak saját ID (api/orders/{userid}
+	GET, DELETE: csak saját ID (api/orders/{userid}
 -	Adminisztrátor:	
 
-	GET, POST, PUT, DELETE:  összes ID (api/orders/{id},  api/orders/{userdid})
-
-### Termék tag-ek táblája
--	Vendégnek és felhasználónak nincs hozzáférése
--	Adminisztrátor:	GET, POST, PUT, DELETE:  összes ID (api/tags/{id})
+	GET, DELETE:  összes ID (api/orders/{id},  api/orders/{userdid})
 
 ## Felhasználói felület tervek
 ![PPS admin UI](/images/admin.png)
@@ -116,30 +105,18 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 #### /api/products/{id}
 - GET : Adott {id}-ű termék listázása
 - DELETE : Adott {id}-ű termék törlése (ADMIN)
-- PUT : Adott {id}-ű termék módosítása (ADMIN)
-#### /api/products/{id}/reservations
-- GET : Adott {id}-ű termék foglalás való előfordulásának listázása (ADMIN)
 ### Reservation
 #### /api/reservation
 - GET : Minden foglalás listázása
-- POST : Új foglalás beszúrása (ADMIN)
+- POST : Új foglalás beszúrása
 #### /api/reservation/{id}
 - GET : Adott {id}-ű foglalás listázása
-- DELETE : Adott {id}-ű foglalás törlése (ADMIN)
-- PUT : Adott {id}-ű foglalás módosítása (ADMIN)
+- DELETE : Adott {id}-ű foglalás törlése
 ### Tag
 #### /api/tags
 - GET : Minden TAG listázása (ADMIN)
-- POST : Új TAG beszúrása (ADMIN)
-### User
-#### /api/users
-- GET : Minden felhasználó listázása (ADMIN)
-#### /api/register
-- POST : Új felhasználó regisztrálása
 #### /api/users/{id}
-- GET : Adott {id}-ű felhasználó listázása (ADMIN) 
-- DELETE : Adott {id}-ű felhasználó törlése (ADMIN) 
-- PUT : Adott {id}-ű felhasználó módosítása (ADMIN)
+- PUT : Adott {id}-ű felhasználó módosítása
 
 ## Regisztrációs végpont működése
 
