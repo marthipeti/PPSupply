@@ -124,6 +124,8 @@ export class ProfilePageComponent implements OnInit {
       const description = this.addProductForm.get('description').value;
       const quantity = parseInt(this.addProductForm.get('quantity').value);
       if (quantity < 1 || Number.isNaN(quantity)) throw 'A mennyiség csak 0-nál nagyobb szám lehet!';
+      if (name === '') throw 'Név nem lehet üres!';
+      if (description === '') throw 'Leírás nem lehet üres!';
       let p: Product = new Product();
       p.name = name;
       p.description = description;
@@ -131,13 +133,16 @@ export class ProfilePageComponent implements OnInit {
       p.image = '';
       let tags = this.tagListForm.value;
       let tagsToAdd: Tag[] = [];
+      if (tags != null) {
       for (let t of tags) {
         tagsToAdd.push(this.tagList.find(x => x.text == t));
+      }
       }
       p.tags = tagsToAdd;
       console.log(p);
       this.productService.addProduct(p);
     } catch (e) {
+      console.log(e);
       this.message = e;
       console.log(this.message);
     }
