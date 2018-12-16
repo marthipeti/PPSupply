@@ -22,9 +22,9 @@
             </mat-expansion-panel-header>
             <mat-card>
               <form [formGroup]="changeProfile" (ngSubmit)="onProfileSubmit()">
-                Név:
+                Felhasználónév:
                 <mat-form-field>
-                  <input matInput formControlName="name" value="{{authService.user.name}}">
+                  <input matInput formControlName="userName" value="{{authService.user.userName}}">
                 </mat-form-field>
                 <br>
                 E-mail cím:
@@ -32,9 +32,9 @@
                   <input matInput formControlName="email" value="{{authService.user.email}}">
                 </mat-form-field>
                 <br>
-                Felhasználónév:
+                Név:
                 <mat-form-field>
-                  <input matInput formControlName="userName" value="{{authService.user.userName}}">
+                  <input matInput formControlName="name" value="{{authService.user.name}}">
                 </mat-form-field>
                 <br>
                 <button mat-flat-button type="submit" color="primary">Adatok szerkesztése</button>
