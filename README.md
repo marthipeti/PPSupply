@@ -8,7 +8,7 @@ A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint 
 
 #### Vendégként:
 - hozzáférhetünk a termékek listájához → *Termékek* *listázása*
-- regisztrálhatunk → *Regisztráció*
+- termékeket tehetünk be a kosárba -> *Termékek* *kosárba* *helyezése*
 
 #### Felhasználóként:
 - hozzáférhetünk a termékek listájához → *Termékek* *listázása*
@@ -21,7 +21,6 @@ A PaperSupply egy olyan alkalmazás, amin keresztül papír-írószer, valamint 
 - hozzáférhetünk a termékek listájához → *Termékek* *listázása*
 - vehetünk fel új terméket → *Termék* *felvétele*
 - törölhetünk terméket → *Termék* *törlése*
-- rendelhetünk terméket a beszállítóktól, a készletek feltöltésére →  *Termékek* *rendelése*
 - hozzáférhetünk felhasználók listájához → *Felhasználók* *listázása*
 - törölhetünk felhasználót → *Felhasználó* *törlése*
 - termékhez köthetük tag-et → *Tag* *hozzáadása*
