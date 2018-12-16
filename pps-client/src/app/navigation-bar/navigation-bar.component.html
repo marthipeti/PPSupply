@@ -4,7 +4,10 @@
     <button mat-button routerLink="">Termékek</button>
     <button mat-button routerLink="profile">Profilom</button>
     <button mat-button routerLink="contact">Kapcsolat</button>
-    <button id="cart" mat-button routerLink="cart">Kosár({{cartSize()}})</button>
+    <span matBadge="{{cartSize()}}" matBadgeOverlap="true">
+      <button id="cart" mat-button routerLink="cart">Kosár</button>
+    </span>
+    
   </span>
 
   <div *ngIf="!authService.isLoggedIn">
