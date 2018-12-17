@@ -70,11 +70,8 @@ export class CartPageComponent implements OnInit {
       let quantity: number = this.cart.products[i].pieces;
       this.reservation.orderedQuantity[productId] = quantity;
     }
-    console.log("a");
-    console.log(this.reservation);
     this.reservationService.addReservation(this.reservation);
     this.cartService.getCart().products = [];
     this.cartService.getCart();
-    this.router.navigate(["profile"]);
   }
 }

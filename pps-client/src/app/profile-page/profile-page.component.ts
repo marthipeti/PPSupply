@@ -105,6 +105,7 @@ export class ProfilePageComponent implements OnInit {
     for (let p of this.reservations.find(x => x.id == reservationId).products) {
       s = s + p.name + ", ";
     }
+    s = s.slice(0,s.length-2);
     if (s.length > 15) {
       s = s.substring(0, 15) + "..."
     }
