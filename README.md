@@ -118,9 +118,9 @@ Az alkalmazás három szerepkört különböztet meg, akiknek más és más hozz
 #### /api/users/{id}
 - PUT : Adott {id}-ű felhasználó módosítása
 
-## Regisztrációs végpont működése
+## Login végpont működése
 
-![szekvencia-diagram](/images/szd.png)
+![szekvencia-diagram](/images/endpoint.png)
 
 ## Alkalmazott könyvtárstruktúra
 1. src (BACKEND)
