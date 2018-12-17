@@ -62,7 +62,6 @@ export class ProfilePageComponent implements OnInit {
       this.reservations = await this.reservationService.getReservationsByUser(this.authService.user);
       this.orderedArray = this.makeArray(this.reservations);
       this.tagList = await this.tagService.getTags();
-      //console.log(this.orderedArray);
     } else {
       this.router.navigate(['login'])
     }
@@ -79,8 +78,6 @@ export class ProfilePageComponent implements OnInit {
   }
 
   deleteReservation(reservation: Reservation) {
-    //console.log(product);
-    console.log(reservation.id);
     this.reservationService.deleteReservation(reservation.id);
     this.reservations = this.getReservations();
   }

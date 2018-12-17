@@ -36,7 +36,6 @@ export class ProductPageComponent implements OnInit {
     if(this.cartService.getCart().products === null){
       this.cartService.getCart().products = [];
     }
-    //let products:  { product: Product, pieces: number }[];
     let product : Product = await this.productService.getProduct(id);
     let bool : boolean = false;
     if(pieces != undefined){

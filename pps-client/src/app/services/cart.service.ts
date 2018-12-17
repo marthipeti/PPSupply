@@ -31,7 +31,6 @@ export class CartService {
 
   public addToCart(product: Product, pieces: number): void {
     this.cart.products.push({ product: product, pieces: pieces });
-    //this.cart.cartQuantity++;
   }
 
   public removeFromCart(product: Product): void {
@@ -79,30 +78,4 @@ export class CartService {
     }
     return null;
   }
-
-  /*public sendReservation(): void {
-    //this.reservation.user = this.cart.user;
-    //this.reservation.products = this.cart.products;
-    //console.log(this.cart);
-    //let reservation = new Reservation();
-    /*this.reservation.user.id = this.cart.user.id;
-    this.reservation.user.name = this.cart.user.name;
-    this.reservation.user.role = this.cart.user.role;
-    this.reservation.user.userName = this.cart.user.userName;
-    for(let i of this.cart.products){
-      let product : Product;
-      product.name = i.product.name;
-      product.quantity = i.product.quantity;
-      product.description = i.product.description;
-      product.image = i.product.image;
-      product.tags = i.product.tags;
-      product.addToCart = i.product.addToCart;
-      this.reservation.products.push(product, i.pieces);
-    }
-    //console.log(this.reservation);
-    this.reservationService.addReservation(this.reservation);
-    this.cart = new Cart();
-    this.cart.products = [];
-}*/
-
 }

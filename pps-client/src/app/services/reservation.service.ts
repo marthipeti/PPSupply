@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class ReservationService {
 
-  //private _RESERVATIONS: Reservation[];
   private routeUser: string = 'users';
   private routeReservation: string = 'reservations';
 
